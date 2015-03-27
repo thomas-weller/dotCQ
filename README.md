@@ -3,7 +3,7 @@
 Source code for the website www.dotcq.com. 
 Uses ASP.NET MVC 4, a lot of JavaScript, and related plugins.
 
-You can readmore about .CQ <a href="http://www.thomas-weller.de/en/pages/cq/" title="About .CQ">here</a>.
+You can read more about .CQ <a href="http://www.thomas-weller.de/en/pages/cq/" title="About .CQ">here</a>.
 
 <hr/>
 
