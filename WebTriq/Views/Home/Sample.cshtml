@@ -1,0 +1,44 @@
+﻿@using System.Configuration
+<div class="page-header background-grey strip" style="margin-bottom: 20px">
+    <div class="container">
+        <h1>
+            Sample Report Preview</h1>
+    </div>
+</div>
+<div class="container">
+    <div class="row" style="margin-left: 2px; margin-top: 8px; margin-bottom: 12px;">
+        <p>
+            This is a preview sample of a .CQ analysis report about a fictitious project named
+            <i>Comp.Horizon</i>.
+        </p>
+        <p>
+            The data are partly based on analysis data gained from the <a href="http://www.fluentnhibernate.org/">
+                Fluent NHibernate</a> open source project, combined with some fake data. Please
+            keep in mind that these sample data serve only illustrative purposes. Therefore
+            they might not be too exact or realistic in each case. Also - for the very same
+            reason - the document's formatting is kept deliberately simple.
+        </p>
+        <p>
+            <small>To design and structure the report in a way that is most useful to both developers
+                and business analysts, your feedback is very welcome. It will definitely help to
+                shape the final product! You may directly <a href="#disqus_thread">comment on this page</a>,
+                or you may discuss it with others in the respective <a href="https://dotcq.zendesk.com/forums/22194856-Report">
+                    forum</a>.</small>
+        </p>
+    </div>
+    <hr style="border: 1px solid #333" />
+    <br />
+</div>
+<div class="container">
+    <div class="row centered">
+        <iframe src="http://docs.google.com/viewer?url=@Url.Encode(ConfigurationManager.AppSettings["samplereport.path"])&embedded=true" width="800px" height="950px" style="border: 1px solid #333">
+        </iframe>
+    </div>
+    <br />
+    <br />
+    <hr style="border: 1px solid #333" />
+    <br />
+    <div>
+        @Disqus.ShowComments(ViewBag.DisqusName)
+    </div>
+</div>

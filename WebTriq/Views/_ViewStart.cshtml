@@ -1,0 +1,5 @@
+﻿@using System.Configuration
+@{
+    Layout = "~/Views/Shared/_BootstrapLayout.basic.cshtml";
+    Disqus.Initialize(ConfigurationManager.AppSettings["disqus.website.shortname"]);
+}

@@ -1,0 +1,56 @@
+<style>
+    .btn-share
+    {
+        margin-right: 20px;
+        border: 0;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        width: 32px;
+        height: 32px;
+    }
+</style>
+
+    <div id="before-navbar" class="before-navbar">
+      <div class="container">
+        <a class="brand" href="/home">
+            <img id="logo-top" src="~/Content/images/logo-top.png" alt="logo" style="margin-left:20px">
+        </a> 
+        <div class="pull-right" style="margin-top: 6px; margin-bottom: 2px;">
+            <p>
+                <button class="btn-share" style="background-image: url('/Content/images/facebook-icon.jpg')"
+                        title="Share on Facebook"
+                        onclick="doShare('facebook');" />
+                <button class="btn-share" style="background-image: url('/Content/images/twitter-icon.jpg')"
+                        title="Tweet this page"
+                        onclick="doShare('twitter');" />
+                <button class="btn-share" style="background-image: url('/Content/images/gplus-icon.jpg'); width: 30px; height: 30px"
+                        title="Share on Google Plus"
+                        onclick="doShare('gplus');" />
+                <button class="btn-share" style="background-image: url('/Content/images/linkedin-icon.jpg'); margin-top: 2px"
+                        title="Share on LinkedIn"
+                        onclick="doShare('linkedin');" />
+                <button class="btn-share" style="background-image: url('/Content/images/delicious-icon.jpg'); margin-right: 60px; margin-top: 2px"
+                        title="Bookmark on Delicious"
+                        onclick="doShare('delicious');" />
+                <button class="btn-share" style="background-image: url('/Content/images/gmail-icon.jpg'); margin-top: 14px"
+                        title="Send via GMail"
+                        onclick="doShare('gmail');" />
+                <button class="btn-share" style="background-image: url('/Content/images/email-icon.jpg'); margin-top: 6px; margin-right: 14px"
+                        title="Send with your local Email client"
+                        onclick="doShare('email');" />
+                <button class="btn-share" style="background-image: url('/Content/images/favorites-icon.jpg'); margin-top: 6px; margin-right: 0"
+                        id="btn"
+                        title="Add to Favorites"
+                        onclick="doShare('bookmark');" />
+            </p>
+        </div>
+        
+        <!-- Sharing components (summaries, images, and the like...) -->
+        <input type="hidden" id="social_summary" value="@Url.Encode(".CQ is a cloud-based service for analyzing C# source code.")">
+        <input type="hidden" id="fb_image" value="@Url.Encode("http://www.w3schools.com/images/colormap_80.gif")">
+        <input type="hidden" id="twitter_text" value="@Url.Encode("www.dotcq.com: .CQ is a cloud-based service for analyzing C# source code.")">
+        <input type="hidden" id="mail_body" value="@Url.Encode("Hi there,\n\nyou may find this link interesting: wwww.dotcq.com\n.CQ is a cloud-based service for analyzing C# source code.")">
+        <input type="hidden" id="mail_subject" value="@Url.Encode("Interesting link: .CQ")">
+
+      </div>
+    </div>

@@ -1,0 +1,1928 @@
+﻿<style>
+    .collapsible-div
+    {
+        overflow: hidden;
+        margin-bottom: 0;
+        padding-left: 20px;
+    }
+</style>
+<div class="page-header background-grey strip">
+    <div class="container">
+        <h1>
+            Frequently Asked Questions about .CQ</h1>
+    </div>
+</div>
+<div class="container">
+    <div class="row" style="margin-left: 2px; margin-top: 8px; margin-bottom: 12px;">
+        <p>
+            To answer some of the most likely questions that you may have, we compiled a list
+            in the popular <a href="http://en.wikipedia.org/wiki/FAQ">FAQ</a> questions and
+            answers format.</p>
+        <p>
+            <small>Please understand this list as an ongoing effort which is responsive towards
+                your feedback. You can influence the content of this page by <a href="#disqus_thread">
+                    leaving a comment</a>, taking the <a href="~/home/survey">survey</a>, or by
+                <a href="~/home/forums">forum</a> discussions.</small>
+        </p>
+    </div>
+    <hr style="border: 1px solid #333" />
+    <br />
+    <div id="what">
+        <div onclick="toggle('divWhat', 'imgWhat')" style="cursor: pointer">
+            <h4>
+                <img id="imgWhat" src="/Content/images/chevron-right.ico">
+                What is .CQ ?</h4>
+        </div>
+        <div id="divWhat" style="display: none" class="collapsible-div">
+            <p>
+                Basically, .CQ is a cloud-based web service that is designed for analyzing a C#
+                software project with regard to its maintainability, combining the findings with
+                user-defined data, and then compiling the overall results into a suitable report.
+                The service will be accessible through a web portal that lets you upload the project's
+                sources, trigger an analysis run, and perform the necessary administrative tasks.
+                After the analysis has finished, you will receive an email with the resulting report.
+            </p>
+            <p>
+                As of now, .CQ is in its very early development - it's rather a concept than a fully
+                shaped product. This is deliberately so, because the development of the product
+                is supposed to consider user feedback and practical market needs from the beginning.
+            </p>
+            <p>
+                To learn more about the concepts and motivations behind .CQ, visit the <a href="~/home/concept">
+                    Concepts page</a>. To see a sample report, go to the <a href="~/home/sample">Report
+                        page</a>.
+            </p>
+        </div>
+    </div>
+    <div id="why">
+        <div onclick="toggle('divWhy', 'imgWhy')" style="cursor: pointer">
+            <h4>
+                <img id="imgWhy" src="/Content/images/chevron-right.ico">
+                There is not yet any product. So why this web site ?</h4>
+        </div>
+        <div id="divWhy" style="display: none" class="collapsible-div">
+            <p>
+                Because .CQ wants to consider the needs and ideas of potential users from the beginning,
+                to build the best possible product. Therefore, it's a good idea to collect user
+                input before development enters its crucial phase. This will both serve as a guidance
+                for further product development and help to avoid investing time and effort in things
+                that later turn out to be less important. (In the language of the <a href="http://en.wikipedia.org/wiki/Lean_Startup">
+                    Lean Startup</a> movement: This serves to obtain a better product-market fit.)
+            </p>
+            <p>
+                Please see <a href="#Feedback">this question</a> to learn about the various ways
+                to give feedback.
+            </p>
+        </div>
+    </div>
+    <div id="when">
+        <div onclick="toggle('divWhen', 'imgWhen')" style="cursor: pointer">
+            <h4>
+                <img id="imgWhen" src="/Content/images/chevron-right.ico">
+                When will .CQ be available ?</h4>
+        </div>
+        <div id="divWhen" style="display: none" class="collapsible-div">
+            <p>
+                .CQ is in its very early development stage, and further product development will
+                depend to a large extent on the obtained customer feedback. Therefore, the roadmap
+                is not yet very clear. The current plan is that .CQ will go live approximately in
+                the middle of next year (2014).
+            </p>
+            <p>
+                To stay informed about the latest developments, you may <a href="index#newsletter">subscribe
+                    to the .CQ newsletter</a>.
+            </p>
+        </div>
+    </div>
+    <div id="Feedback">
+        <div onclick="toggle('divFeedback', 'imgFeedback')" style="cursor: pointer">
+            <h4>
+                <img id="imgFeedback" src="/Content/images/chevron-right.ico">
+                How can I give feedback ?</h4>
+        </div>
+        <div id="divFeedback" style="display: none" class="collapsible-div">
+            <p>
+                There are three ways to tell us what you think:
+            </p>
+            <ul>
+                <li>You can leave a comment directly on the page you're currently at.</li>
+                <li>You can take the <a href="~/home/survey">quick survey</a> for providing more formalized
+                    feedback.</li>
+                <li>You can discuss with other people in the <a href="~/home/forums">forums</a>. (There
+                    is also <a href="https://dotcq.zendesk.com/forums/22179761-Feature-Proposals">one for
+                        proposing and voting for specific features</a> that you'd like to see in the
+                    final product.)</li>
+            </ul>
+            <p>
+                The input received on each of these channels will influence the shape of the final
+                product.
+            </p>
+        </div>
+    </div>
+    <div id="Motivation">
+        <div onclick="toggle('divMotivation', 'imgMotivation')" style="cursor: pointer">
+            <h4>
+                <img id="imgMotivation" src="/Content/images/chevron-right.ico">
+                In short, what's the principal motivation behind .CQ ?</h4>
+        </div>
+        <div id="divMotivation" style="display: none" class="collapsible-div">
+            <p>
+                Code monitoring and software maintenance are hard and expensive. On the other hand,
+                maintenance makes up by far the single biggest portion of a project's total lifecycle
+                budget. So, controlling and improving a software project's maintainability will
+                have a huge positive impact on this budget (or, in other words: it will significantly
+                raise its ROI).
+            </p>
+            <p>
+                Also, implementing any kind of code quality mechanism is a complex and expensive
+                task that requires huge up-front investments. .CQ wants to overcome these practical
+                problems in providing an affordable and flexible alternative which also fits smaller
+                budgets.
+            </p>
+            <p>
+                You may read the <a href="~/home/concept">Concepts page</a> for a more detailed
+                explanation of the motivations and concepts behind .CQ. To see a sample report,
+                go to the <a href="~/home/sample">Report page</a>.
+            </p>
+        </div>
+    </div>
+    <div id="Outline">
+        <div onclick="toggle('divOutline', 'imgOutline')" style="cursor: pointer">
+            <h4>
+                <img id="imgOutline" src="/Content/images/chevron-right.ico">
+                Can you briefly outline what .CQ does ?</h4>
+        </div>
+        <div id="divOutline" style="display: none" class="collapsible-div">
+            <p>
+                Basically, the analysis is a two-step process:
+            </p>
+            <ul>
+                <li>First, some code metric measurements which are especially sensitive to maintainability are applied to the
+                    source code. These measurement results then are mapped to software maintainability
+                    characteristics, resulting in an overall maintainability score.</li>
+                <li>Second, these data - derived from the source code - are correlated with customer-specific data that
+                    can be freely defined and entered by the user. (It can be anything that is meaningful to the project,
+                    e.g. sales figures, expenses for maintenance activities or the like...) </li>
+            </ul>
+            <p>
+                The results then are presented to the user in a comprehensive report document, which
+                is useful both to developers and for project management.
+            </p>
+            <p>
+                You may read the <a href="~/home/concept">Concepts page</a> for a more detailed
+                explanation of the motivations and concepts behind .CQ. To see a sample report,
+                go to the <a href="~/home/sample">Report page</a>.
+            </p>
+        </div>
+    </div>
+    <div id="Users">
+        <div onclick="toggle('divUsers', 'imgUsers')" style="cursor: pointer">
+            <h4>
+                <img id="imgUsers" src="/Content/images/chevron-right.ico">
+                What are the intended users of .CQ ?</h4>
+        </div>
+        <div id="divUsers" style="display: none" class="collapsible-div">
+            <p>
+                Generally, everyone who is involved in (C#) software projects. More specifically,
+                these two groups of people:
+            </p>
+            <ul>
+                <li>Software developers who work with the project's source code.</li>
+                <li>Business executives who are concerned with the financial and strategic aspects of
+                    the project.</li>
+            </ul>
+        </div>
+    </div>
+    <div id="Usecases">
+        <div onclick="toggle('divUsecases', 'imgUsecases')" style="cursor: pointer">
+            <h4>
+                <img id="imgUsecases" src="/Content/images/chevron-right.ico">
+                What are the typical use cases for .CQ ?</h4>
+        </div>
+        <div id="divUsecases" style="display: none" class="collapsible-div">
+            <p>
+                Generally, .CQ can be used whenever a source code and maintainability analysis of
+                a (C#) software project is needed. While its use is not limited to any specific
+                scenario, here are some of the more prominent use cases that one could think of:
+            </p>
+            <ul>
+                <li>It can be applied to newly started projects on a frequent basis - for better monitoring
+                    development efforts.</li>
+                <li>It may be used to analyze legacy projects - for finding potential problem areas
+                    and/or receiving guidance for possible refactoring activities.</li>
+                <li>It can be applied to outsourced projects - for checking its general maintainability
+                    and possibly for defining respective thresholds.</li>
+            </ul>
+        </div>
+    </div>
+    <div id="Languages">
+        <div onclick="toggle('divLanguages', 'imgLanguages')" style="cursor: pointer">
+            <h4>
+                <img id="imgLanguages" src="/Content/images/chevron-right.ico">
+                What programming languages will .CQ support ?</h4>
+        </div>
+        <div id="divLanguages" style="display: none" class="collapsible-div">
+            <p>
+                In its first version, .CQ will be exclusively available for C# projects. However,
+                the technology behind .CQ also allows for almost any other language. So, according
+                to customer demand, there may be more to come in the future...
+            </p>
+        </div>
+    </div>
+    <div id="BC">
+        <div onclick="toggle('divBC', 'imgBC')" style="cursor: pointer">
+            <h4>
+                <img id="imgBC" src="/Content/images/chevron-right.ico">
+                What is the business concept behind .CQ ?</h4>
+        </div>
+        <div id="divBC" style="display: none" class="collapsible-div">
+            <p>
+                In short, there is none. Not yet. By design.
+            </p>
+            <p>
+                There is a technical concept, and a general idea of what could work and what is
+                needed, but there is nothing like a business plan or the like. Instead of spending
+                lots of effort to tread paths that might lead you nowhere, it is better to
+                present a preliminary concept to the public and to see what relevant people
+                have to say about it.
+            </p>
+        </div>
+    </div>
+    <div id="Pricing">
+        <div onclick="toggle('divPricing', 'imgPricing')" style="cursor: pointer">
+            <h4>
+                <img id="imgPricing" src="/Content/images/chevron-right.ico">
+                What will be the pricing scheme of .CQ ?</h4>
+        </div>
+        <div id="divPricing" style="display: none" class="collapsible-div">
+            <p>
+                The exact pricing scheme is not yet decided upon, as it largely depends on the obtained
+                feedback - just like most other things. Generally, .CQ is intended to be used on
+                a frequent basis (for projects in the development phase), as well as on an as-needed
+                basis (for already existing projects). So the most likely scheme will be a kind
+                of 'flatrate' subscription together with some kind of pay-as-you-go option.
+            </p>
+        </div>
+    </div>
+    <div id="People">
+        <div onclick="toggle('divPeople', 'imgPeople')" style="cursor: pointer">
+            <h4>
+                <img id="imgPeople" src="/Content/images/chevron-right.ico">
+                Who are the people behind .CQ ?</h4>
+        </div>
+        <div id="divPeople" style="display: none" class="collapsible-div">
+            <p>
+                Formally, this website is operated by a company named <em>dotCQ Software Development</em>.
+                As of now, there's exactly one person behind this company: <a href="http://www.linkedin.com/profile/view?id=67006166&trk=tab_pro">
+                    Thomas Weller</a>, who is a freelance software developer and consultant (C#)
+                from Germany (Oh, and don't mind the photograph, it's more than ten years old. It's
+                just that I currently have none at hand that would better fit the bill...).
+            </p>
+        </div>
+    </div>
+    <div id="Huh">
+        <div onclick="toggle('divHuh', 'imgHuh')" style="cursor: pointer">
+            <h4>
+                <img id="imgHuh" src="/Content/images/chevron-right.ico">
+                What's this thing with code quality ?</h4>
+        </div>
+        <div id="divHuh" style="display: none" class="collapsible-div">
+            <p>
+                Personally, my coding was often impaired in various degrees by bad code quality,
+                and sometimes I even was totally frustrated about it. So, over the years, I focused
+                more and more on this specific aspect of programming. At the same time I realized
+                that there was no common understanding among the various stakeholders of what software
+                quality actually is, how it affects a developer's daily work, how it can be measured,
+                and how large its effects on a project's budget can be.
+            </p>
+            <p>
+                Also, I was missing a solution that is practical, affordable, easy-to-implement
+                and easy-to-use.
+            </p>
+        </div>
+    </div>
+    <div id="Name">
+        <div onclick="toggle('divName', 'imgName')" style="cursor: pointer">
+            <h4>
+                <img id="imgName" src="/Content/images/chevron-right.ico">
+                What's in a name ?</h4>
+        </div>
+        <div id="divName" style="display: none" class="collapsible-div">
+            <p>
+                Well, .CQ simply is an acronym for <b>.</b>NET <b>C</b>ode <b>Q</b>uality. - Sure,
+                the concepts behind.CQ are in no way limited to .NET, but this is where it, historically
+                seen, came from...
+            </p>
+        </div>
+    </div>
+    <div id="Arch">
+        <div onclick="toggle('divArch', 'imgArch')" style="cursor: pointer">
+            <h4>
+                <img id="imgArch" src="/Content/images/chevron-right.ico">
+                What will be the overall architecture of .CQ ?</h4>
+        </div>
+        <div id="divArch" style="display: none" class="collapsible-div">
+            <p>
+                Generally, the .CQ service will be exposed through a RESTful Web API. This kind
+                of architecture allows for calling .CQ from any context and to build any kind of
+                client application that you can think of. When the analysis report becomes available
+                then, the user will be notified. The following diagram illustrates this:
+            </p>
+            <p>
+                <img src="/Content/images/API_Architecture.png" alt="General Architecture">
+            </p>
+            <p>
+                Because of its flexible architecture, it will be possible to integrate the .CQ system
+                with any available technology. - Of course there will be a website, but you could
+                also think of e.g. IDE plugins (for development), a command-line client (for Continuous
+                Integration), etc. What exact kind of clients will be made available or scheduled
+                for development, largely depends on the requirements that will be expressed via
+                feedback.
+            </p>
+            <p>
+                Also, various different notification channels are imagineable (e.g. EMail, SMS,
+                Twitter...). Just like the client technologies, it will depend on feedback what
+                channel(s) will be implemented in the end.
+            </p>
+        </div>
+    </div>
+    <div id="CalculatorWay">
+        <div onclick="toggle('divCalculatorWay', 'imgCalculatorWay')" style="cursor: pointer">
+            <h4>
+                <img id="imgCalculatorWay" src="/Content/images/chevron-right.ico">
+                What are the math and assumptions behind the Online Calculator ?</h4>
+        </div>
+        <div id="divCalculatorWay" style="display: none" class="collapsible-div">
+            @Html.Partial("_faqCalculator")
+        </div>
+    </div>
+    <div id="LookupTables">
+        <div onclick="toggle('divLookupTables', 'imgLookupTables')" style="cursor: pointer">
+            <h4>
+                <img id="imgLookupTables" src="/Content/images/chevron-right.ico">
+                I don't have the project size in man-years at hand, but only in Lines of Code or
+                Function Points. How can I get the corresponding time value ?</h4>
+        </div>
+        <div id="divLookupTables" style="display: none" class="collapsible-div">
+            <p>
+                Based on the values from the previous answer, here are two helpful conversion tables
+                to quickly look up the required values (rounded to integers):
+            </p>
+            <h5>
+                Source Lines of Code (SLOC)
+            </h5>
+            <table class="table-bordered table-condensed table-striped" style="text-align: right">
+                <thead style="background-color: lightgrey">
+                    <tr>
+                        <th>
+                            SLOC
+                        </th>
+                        <th>
+                            years
+                        </th>
+                        <th>
+                            FPs
+                        </th>
+                        <th>
+                            SLOC
+                        </th>
+                        <th>
+                            years
+                        </th>
+                        <th>
+                            FPs
+                        </th>
+                        <th>
+                            SLOC
+                        </th>
+                        <th>
+                            years
+                        </th>
+                        <th>
+                            FPs
+                        </th>
+                        <th>
+                            SLOC
+                        </th>
+                        <th>
+                            years
+                        </th>
+                        <th>
+                            FPs
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>10000</strong>
+                        </td>
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            182
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>210000</strong>
+                        </td>
+                        <td>
+                            30
+                        </td>
+                        <td>
+                            3818
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>1100000</strong>
+                        </td>
+                        <td>
+                            155
+                        </td>
+                        <td>
+                            20000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>3100000</strong>
+                        </td>
+                        <td>
+                            438
+                        </td>
+                        <td>
+                            56364
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>20000</strong>
+                        </td>
+                        <td>
+                            3
+                        </td>
+                        <td>
+                            364
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>220000</strong>
+                        </td>
+                        <td>
+                            31
+                        </td>
+                        <td>
+                            4000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>1200000</strong>
+                        </td>
+                        <td>
+                            169
+                        </td>
+                        <td>
+                            21818
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>3200000</strong>
+                        </td>
+                        <td>
+                            452
+                        </td>
+                        <td>
+                            58182
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>30000</strong>
+                        </td>
+                        <td>
+                            4
+                        </td>
+                        <td>
+                            545
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>230000</strong>
+                        </td>
+                        <td>
+                            32
+                        </td>
+                        <td>
+                            4182
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>1300000</strong>
+                        </td>
+                        <td>
+                            184
+                        </td>
+                        <td>
+                            23636
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>3300000</strong>
+                        </td>
+                        <td>
+                            466
+                        </td>
+                        <td>
+                            60000
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>40000</strong>
+                        </td>
+                        <td>
+                            6
+                        </td>
+                        <td>
+                            727
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>240000</strong>
+                        </td>
+                        <td>
+                            34
+                        </td>
+                        <td>
+                            4364
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>1400000</strong>
+                        </td>
+                        <td>
+                            198
+                        </td>
+                        <td>
+                            25455
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>3400000</strong>
+                        </td>
+                        <td>
+                            480
+                        </td>
+                        <td>
+                            61818
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>50000</strong>
+                        </td>
+                        <td>
+                            7
+                        </td>
+                        <td>
+                            909
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>250000</strong>
+                        </td>
+                        <td>
+                            35
+                        </td>
+                        <td>
+                            4545
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>1500000</strong>
+                        </td>
+                        <td>
+                            212
+                        </td>
+                        <td>
+                            27273
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>3500000</strong>
+                        </td>
+                        <td>
+                            494
+                        </td>
+                        <td>
+                            63636
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>60000</strong>
+                        </td>
+                        <td>
+                            8
+                        </td>
+                        <td>
+                            1091
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>300000</strong>
+                        </td>
+                        <td>
+                            42
+                        </td>
+                        <td>
+                            5455
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>1600000</strong>
+                        </td>
+                        <td>
+                            226
+                        </td>
+                        <td>
+                            29091
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>3600000</strong>
+                        </td>
+                        <td>
+                            508
+                        </td>
+                        <td>
+                            65455
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>70000</strong>
+                        </td>
+                        <td>
+                            10
+                        </td>
+                        <td>
+                            1273
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>350000</strong>
+                        </td>
+                        <td>
+                            49
+                        </td>
+                        <td>
+                            6364
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>1700000</strong>
+                        </td>
+                        <td>
+                            240
+                        </td>
+                        <td>
+                            30909
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>3700000</strong>
+                        </td>
+                        <td>
+                            523
+                        </td>
+                        <td>
+                            67273
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>80000</strong>
+                        </td>
+                        <td>
+                            11
+                        </td>
+                        <td>
+                            1455
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>400000</strong>
+                        </td>
+                        <td>
+                            56
+                        </td>
+                        <td>
+                            7273
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>1800000</strong>
+                        </td>
+                        <td>
+                            254
+                        </td>
+                        <td>
+                            32727
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>3800000</strong>
+                        </td>
+                        <td>
+                            537
+                        </td>
+                        <td>
+                            69091
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>90000</strong>
+                        </td>
+                        <td>
+                            13
+                        </td>
+                        <td>
+                            1636
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>450000</strong>
+                        </td>
+                        <td>
+                            64
+                        </td>
+                        <td>
+                            8182
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>1900000</strong>
+                        </td>
+                        <td>
+                            268
+                        </td>
+                        <td>
+                            34545
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>3900000</strong>
+                        </td>
+                        <td>
+                            551
+                        </td>
+                        <td>
+                            70909
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>100000</strong>
+                        </td>
+                        <td>
+                            14
+                        </td>
+                        <td>
+                            1818
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>500000</strong>
+                        </td>
+                        <td>
+                            71
+                        </td>
+                        <td>
+                            9091
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>2000000</strong>
+                        </td>
+                        <td>
+                            282
+                        </td>
+                        <td>
+                            36364
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>4000000</strong>
+                        </td>
+                        <td>
+                            565
+                        </td>
+                        <td>
+                            72727
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>110000</strong>
+                        </td>
+                        <td>
+                            16
+                        </td>
+                        <td>
+                            2000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>550000</strong>
+                        </td>
+                        <td>
+                            78
+                        </td>
+                        <td>
+                            10000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>2100000</strong>
+                        </td>
+                        <td>
+                            297
+                        </td>
+                        <td>
+                            38182
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>4100000</strong>
+                        </td>
+                        <td>
+                            579
+                        </td>
+                        <td>
+                            74545
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>120000</strong>
+                        </td>
+                        <td>
+                            17
+                        </td>
+                        <td>
+                            2182
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>600000</strong>
+                        </td>
+                        <td>
+                            85
+                        </td>
+                        <td>
+                            10909
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>2200000</strong>
+                        </td>
+                        <td>
+                            311
+                        </td>
+                        <td>
+                            40000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>4200000</strong>
+                        </td>
+                        <td>
+                            593
+                        </td>
+                        <td>
+                            76364
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>130000</strong>
+                        </td>
+                        <td>
+                            18
+                        </td>
+                        <td>
+                            2364
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>650000</strong>
+                        </td>
+                        <td>
+                            92
+                        </td>
+                        <td>
+                            11818
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>2300000</strong>
+                        </td>
+                        <td>
+                            325
+                        </td>
+                        <td>
+                            41818
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>4300000</strong>
+                        </td>
+                        <td>
+                            607
+                        </td>
+                        <td>
+                            78182
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>140000</strong>
+                        </td>
+                        <td>
+                            20
+                        </td>
+                        <td>
+                            2545
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>700000</strong>
+                        </td>
+                        <td>
+                            99
+                        </td>
+                        <td>
+                            12727
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>2400000</strong>
+                        </td>
+                        <td>
+                            339
+                        </td>
+                        <td>
+                            43636
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>4400000</strong>
+                        </td>
+                        <td>
+                            621
+                        </td>
+                        <td>
+                            80000
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>150000</strong>
+                        </td>
+                        <td>
+                            21
+                        </td>
+                        <td>
+                            2727
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>750000</strong>
+                        </td>
+                        <td>
+                            106
+                        </td>
+                        <td>
+                            13636
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>2500000</strong>
+                        </td>
+                        <td>
+                            353
+                        </td>
+                        <td>
+                            45455
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>4500000</strong>
+                        </td>
+                        <td>
+                            636
+                        </td>
+                        <td>
+                            81818
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>160000</strong>
+                        </td>
+                        <td>
+                            23
+                        </td>
+                        <td>
+                            2909
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>800000</strong>
+                        </td>
+                        <td>
+                            113
+                        </td>
+                        <td>
+                            14545
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>2600000</strong>
+                        </td>
+                        <td>
+                            367
+                        </td>
+                        <td>
+                            47273
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>4600000</strong>
+                        </td>
+                        <td>
+                            650
+                        </td>
+                        <td>
+                            83636
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>170000</strong>
+                        </td>
+                        <td>
+                            24
+                        </td>
+                        <td>
+                            3091
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>850000</strong>
+                        </td>
+                        <td>
+                            120
+                        </td>
+                        <td>
+                            15455
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>2700000</strong>
+                        </td>
+                        <td>
+                            381
+                        </td>
+                        <td>
+                            49091
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>4700000</strong>
+                        </td>
+                        <td>
+                            664
+                        </td>
+                        <td>
+                            85455
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>180000</strong>
+                        </td>
+                        <td>
+                            25
+                        </td>
+                        <td>
+                            3273
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>900000</strong>
+                        </td>
+                        <td>
+                            127
+                        </td>
+                        <td>
+                            16364
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>2800000</strong>
+                        </td>
+                        <td>
+                            395
+                        </td>
+                        <td>
+                            50909
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>4800000</strong>
+                        </td>
+                        <td>
+                            678
+                        </td>
+                        <td>
+                            87273
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>190000</strong>
+                        </td>
+                        <td>
+                            27
+                        </td>
+                        <td>
+                            3455
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>950000</strong>
+                        </td>
+                        <td>
+                            134
+                        </td>
+                        <td>
+                            17273
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>2900000</strong>
+                        </td>
+                        <td>
+                            410
+                        </td>
+                        <td>
+                            52727
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>4900000</strong>
+                        </td>
+                        <td>
+                            692
+                        </td>
+                        <td>
+                            89091
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>200000</strong>
+                        </td>
+                        <td>
+                            28
+                        </td>
+                        <td>
+                            3636
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>1000000</strong>
+                        </td>
+                        <td>
+                            141
+                        </td>
+                        <td>
+                            18182
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>3000000</strong>
+                        </td>
+                        <td>
+                            424
+                        </td>
+                        <td>
+                            54545
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>5000000</strong>
+                        </td>
+                        <td>
+                            706
+                        </td>
+                        <td>
+                            90909
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br />
+            <h5>
+                Function Points (FPs)
+            </h5>
+            <table class="table-bordered table-condensed table-striped" style="text-align: right">
+                <thead style="background-color: lightgrey">
+                    <tr>
+                        <th>
+                            FPs
+                        </th>
+                        <th>
+                            years
+                        </th>
+                        <th>
+                            SLOC
+                        </th>
+                        <th>
+                            FPs
+                        </th>
+                        <th>
+                            years
+                        </th>
+                        <th>
+                            SLOC
+                        </th>
+                        <th>
+                            FPs
+                        </th>
+                        <th>
+                            years
+                        </th>
+                        <th>
+                            SLOC
+                        </th>
+                        <th>
+                            FPs
+                        </th>
+                        <th>
+                            years
+                        </th>
+                        <th>
+                            SLOC
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>100</strong>
+                        </td>
+                        <td>
+                            1
+                        </td>
+                        <td>
+                            5500
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>3200</strong>
+                        </td>
+                        <td>
+                            25
+                        </td>
+                        <td>
+                            176000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>11000</strong>
+                        </td>
+                        <td>
+                            86
+                        </td>
+                        <td>
+                            605000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>47500</strong>
+                        </td>
+                        <td>
+                            371
+                        </td>
+                        <td>
+                            2612500
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>200</strong>
+                        </td>
+                        <td>
+                            2
+                        </td>
+                        <td>
+                            11000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>3400</strong>
+                        </td>
+                        <td>
+                            27
+                        </td>
+                        <td>
+                            187000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>12000</strong>
+                        </td>
+                        <td>
+                            94
+                        </td>
+                        <td>
+                            660000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>50000</strong>
+                        </td>
+                        <td>
+                            391
+                        </td>
+                        <td>
+                            2750000
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>300</strong>
+                        </td>
+                        <td>
+                            2
+                        </td>
+                        <td>
+                            16500
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>3600</strong>
+                        </td>
+                        <td>
+                            28
+                        </td>
+                        <td>
+                            198000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>13000</strong>
+                        </td>
+                        <td>
+                            102
+                        </td>
+                        <td>
+                            715000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>55000</strong>
+                        </td>
+                        <td>
+                            430
+                        </td>
+                        <td>
+                            3025000
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>400</strong>
+                        </td>
+                        <td>
+                            3
+                        </td>
+                        <td>
+                            22000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>3800</strong>
+                        </td>
+                        <td>
+                            30
+                        </td>
+                        <td>
+                            209000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>14000</strong>
+                        </td>
+                        <td>
+                            109
+                        </td>
+                        <td>
+                            770000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>60000</strong>
+                        </td>
+                        <td>
+                            469
+                        </td>
+                        <td>
+                            3300000
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>500</strong>
+                        </td>
+                        <td>
+                            4
+                        </td>
+                        <td>
+                            27500
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>4000</strong>
+                        </td>
+                        <td>
+                            31
+                        </td>
+                        <td>
+                            220000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>15000</strong>
+                        </td>
+                        <td>
+                            117
+                        </td>
+                        <td>
+                            825000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>65000</strong>
+                        </td>
+                        <td>
+                            508
+                        </td>
+                        <td>
+                            3575000
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>600</strong>
+                        </td>
+                        <td>
+                            5
+                        </td>
+                        <td>
+                            33000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>4200</strong>
+                        </td>
+                        <td>
+                            33
+                        </td>
+                        <td>
+                            231000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>16000</strong>
+                        </td>
+                        <td>
+                            125
+                        </td>
+                        <td>
+                            880000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>70000</strong>
+                        </td>
+                        <td>
+                            547
+                        </td>
+                        <td>
+                            3850000
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>700</strong>
+                        </td>
+                        <td>
+                            5
+                        </td>
+                        <td>
+                            38500
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>4400</strong>
+                        </td>
+                        <td>
+                            34
+                        </td>
+                        <td>
+                            242000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>17000</strong>
+                        </td>
+                        <td>
+                            133
+                        </td>
+                        <td>
+                            935000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>75000</strong>
+                        </td>
+                        <td>
+                            586
+                        </td>
+                        <td>
+                            4125000
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>800</strong>
+                        </td>
+                        <td>
+                            6
+                        </td>
+                        <td>
+                            44000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>4600</strong>
+                        </td>
+                        <td>
+                            36
+                        </td>
+                        <td>
+                            253000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>18000</strong>
+                        </td>
+                        <td>
+                            141
+                        </td>
+                        <td>
+                            990000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>80000</strong>
+                        </td>
+                        <td>
+                            625
+                        </td>
+                        <td>
+                            4400000
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>900</strong>
+                        </td>
+                        <td>
+                            7
+                        </td>
+                        <td>
+                            49500
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>4800</strong>
+                        </td>
+                        <td>
+                            37
+                        </td>
+                        <td>
+                            264000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>19000</strong>
+                        </td>
+                        <td>
+                            148
+                        </td>
+                        <td>
+                            1045000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>85000</strong>
+                        </td>
+                        <td>
+                            664
+                        </td>
+                        <td>
+                            4675000
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>1000</strong>
+                        </td>
+                        <td>
+                            8
+                        </td>
+                        <td>
+                            55000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>5000</strong>
+                        </td>
+                        <td>
+                            39
+                        </td>
+                        <td>
+                            275000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>20000</strong>
+                        </td>
+                        <td>
+                            156
+                        </td>
+                        <td>
+                            1100000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>90000</strong>
+                        </td>
+                        <td>
+                            703
+                        </td>
+                        <td>
+                            4950000
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>1200</strong>
+                        </td>
+                        <td>
+                            9
+                        </td>
+                        <td>
+                            66000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>5500</strong>
+                        </td>
+                        <td>
+                            43
+                        </td>
+                        <td>
+                            302500
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>22500</strong>
+                        </td>
+                        <td>
+                            176
+                        </td>
+                        <td>
+                            1237500
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>95000</strong>
+                        </td>
+                        <td>
+                            742
+                        </td>
+                        <td>
+                            5225000
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>1400</strong>
+                        </td>
+                        <td>
+                            11
+                        </td>
+                        <td>
+                            77000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>6000</strong>
+                        </td>
+                        <td>
+                            47
+                        </td>
+                        <td>
+                            330000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>25000</strong>
+                        </td>
+                        <td>
+                            195
+                        </td>
+                        <td>
+                            1375000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>100000</strong>
+                        </td>
+                        <td>
+                            781
+                        </td>
+                        <td>
+                            5500000
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>1600</strong>
+                        </td>
+                        <td>
+                            12
+                        </td>
+                        <td>
+                            88000
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>6500</strong>
+                        </td>
+                        <td>
+                            51
+                        </td>
+                        <td>
+                            357500
+                        </td>
+                        <td style='background-color: rgb(222, 222, 222)'>
+                            <strong>27500</strong>
+                        </td>
+                        <td>
+                            215
+                        </td>
+                        <td>
+                            1512500
+                        </td>
+                        <tr>
+                            <td style='background-color: rgb(222, 222, 222)'>
+                                <strong>1800</strong>
+                            </td>
+                            <td>
+                                14
+                            </td>
+                            <td>
+                                99000
+                            </td>
+                            <td style='background-color: rgb(222, 222, 222)'>
+                                <strong>7000</strong>
+                            </td>
+                            <td>
+                                55
+                            </td>
+                            <td>
+                                385000
+                            </td>
+                            <td style='background-color: rgb(222, 222, 222)'>
+                                <strong>30000</strong>
+                            </td>
+                            <td>
+                                234
+                            </td>
+                            <td>
+                                1650000
+                            </td>
+                            <tr>
+                                <td style='background-color: rgb(222, 222, 222)'>
+                                    <strong>2000</strong>
+                                </td>
+                                <td>
+                                    16
+                                </td>
+                                <td>
+                                    110000
+                                </td>
+                                <td style='background-color: rgb(222, 222, 222)'>
+                                    <strong>7500</strong>
+                                </td>
+                                <td>
+                                    59
+                                </td>
+                                <td>
+                                    412500
+                                </td>
+                                <td style='background-color: rgb(222, 222, 222)'>
+                                    <strong>32500</strong>
+                                </td>
+                                <td>
+                                    254
+                                </td>
+                                <td>
+                                    1787500
+                                </td>
+                                <tr>
+                                    <td style='background-color: rgb(222, 222, 222)'>
+                                        <strong>2200</strong>
+                                    </td>
+                                    <td>
+                                        17
+                                    </td>
+                                    <td>
+                                        121000
+                                    </td>
+                                    <td style='background-color: rgb(222, 222, 222)'>
+                                        <strong>8000</strong>
+                                    </td>
+                                    <td>
+                                        62
+                                    </td>
+                                    <td>
+                                        440000
+                                    </td>
+                                    <td style='background-color: rgb(222, 222, 222)'>
+                                        <strong>35000</strong>
+                                    </td>
+                                    <td>
+                                        273
+                                    </td>
+                                    <td>
+                                        1925000
+                                    </td>
+                                    <tr>
+                                        <td style='background-color: rgb(222, 222, 222)'>
+                                            <strong>2400</strong>
+                                        </td>
+                                        <td>
+                                            19
+                                        </td>
+                                        <td>
+                                            132000
+                                        </td>
+                                        <td style='background-color: rgb(222, 222, 222)'>
+                                            <strong>8500</strong>
+                                        </td>
+                                        <td>
+                                            66
+                                        </td>
+                                        <td>
+                                            467500
+                                        </td>
+                                        <td style='background-color: rgb(222, 222, 222)'>
+                                            <strong>37500</strong>
+                                        </td>
+                                        <td>
+                                            293
+                                        </td>
+                                        <td>
+                                            2062500
+                                        </td>
+                                        <tr>
+                                            <td style='background-color: rgb(222, 222, 222)'>
+                                                <strong>2600</strong>
+                                            </td>
+                                            <td>
+                                                20
+                                            </td>
+                                            <td>
+                                                143000
+                                            </td>
+                                            <td style='background-color: rgb(222, 222, 222)'>
+                                                <strong>9000</strong>
+                                            </td>
+                                            <td>
+                                                70
+                                            </td>
+                                            <td>
+                                                495000
+                                            </td>
+                                            <td style='background-color: rgb(222, 222, 222)'>
+                                                <strong>40000</strong>
+                                            </td>
+                                            <td>
+                                                312
+                                            </td>
+                                            <td>
+                                                2200000
+                                            </td>
+                                            <tr>
+                                                <td style='background-color: rgb(222, 222, 222)'>
+                                                    <strong>2800</strong>
+                                                </td>
+                                                <td>
+                                                    22
+                                                </td>
+                                                <td>
+                                                    154000
+                                                </td>
+                                                <td style='background-color: rgb(222, 222, 222)'>
+                                                    <strong>9500</strong>
+                                                </td>
+                                                <td>
+                                                    74
+                                                </td>
+                                                <td>
+                                                    522500
+                                                </td>
+                                                <td style='background-color: rgb(222, 222, 222)'>
+                                                    <strong>42500</strong>
+                                                </td>
+                                                <td>
+                                                    332
+                                                </td>
+                                                <td>
+                                                    2337500
+                                                </td>
+                                                <tr>
+                                                    <td style='background-color: rgb(222, 222, 222)'>
+                                                        <strong>3000</strong>
+                                                    </td>
+                                                    <td>
+                                                        23
+                                                    </td>
+                                                    <td>
+                                                        165000
+                                                    </td>
+                                                    <td style='background-color: rgb(222, 222, 222)'>
+                                                        <strong>10000</strong>
+                                                    </td>
+                                                    <td>
+                                                        78
+                                                    </td>
+                                                    <td>
+                                                        550000
+                                                    </td>
+                                                    <td style='background-color: rgb(222, 222, 222)'>
+                                                        <strong>45000</strong>
+                                                    </td>
+                                                    <td>
+                                                        351
+                                                    </td>
+                                                    <td>
+                                                        2475000
+                                                    </td>
+                </tbody>
+            </table>
+            <br />
+        </div>
+    </div>
+    <br />
+    <hr style="border: 1px solid #333" />
+    <br />
+    <div>
+        @Disqus.ShowComments(ViewBag.DisqusName)
+    </div>
+</div>
+<script language="JavaScript" type="text/javascript">
+    function toggle(divId, imgId) {
+        var div = document.getElementById(divId);
+        var img = document.getElementById(imgId);
+        if (div.style.display == 'none') {
+            img.src = '/Content/images/chevron-up.ico';
+            div.style.display = 'block';
+        } else {
+            img.src = '/Content/images/chevron-right.ico';
+            div.style.display = 'none';
+        }
+    }
+</script>

@@ -1,0 +1,7 @@
+This folder contains some bits and bytes that are used in ProductZero's WordPress blog.
+
+
+File							Description
+--------------------------------------------------------------------------------------------------------------
+style.css						Stylesheet for the blog theme 'iconic-one' with customizations
+bottom_of_every_post.txt		HTML code for WP-plugin 'Bottom of post'

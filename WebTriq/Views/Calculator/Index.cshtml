@@ -1,0 +1,489 @@
+﻿@using WebTriq.Controllers
+@model WebTriq.Models.Calculator
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="/Content/calculator.css">
+<div class="page-header background-grey strip">
+    <div class="container">
+        <h1>
+            Maintenance Cost Calculator</h1>
+    </div>
+</div>
+<div class="container">
+    <p>
+        Taking project size as its origin, this Calculator gives an estimate of the maintenance
+        effort, and consequently the related financial effects, that you can expect over
+        the years of the project's lifetime.
+    </p>
+    <p>
+        According to your settings, two data series are calculated:
+    </p>
+    <ul>
+        <li>&nbsp;&nbsp;<span class="label" style="background-color: #4572a7">Baseline</span>&nbsp;&nbsp;Cost
+            calculation based on the unmodified project values.</li>
+        <li>&nbsp;&nbsp;<span class="label" style="background-color: darkgreen">Surplus</span>&nbsp;&nbsp;Cost
+            calculation under the assumption that an extra amount is invested in the project's
+            code quality. </li>
+    </ul>
+    <p>
+        This allows for a comparison of the two data series under otherwise unchanged conditions
+        and thereby gives you an adequate first picture of the financial implications of
+        such an additional investment.
+    </p>
+    <p>
+        You can inspect concrete values for the calculated data series by hovering with
+        the mouse over the respective columns of the diagram's x-axis.<br />
+        Also, there's a short explanation available for each calculation item, if you hover
+        over the
+        <img src="~/Content/images/question_button.png" alt="help-button" width="16px" height="16px" />
+        button.
+    </p>
+    <p>
+        <small>Please keep in mind that the Calculator results should be taken only as rough
+            approximations. The calculations are based on industry-averages and some reasonable
+            assumptions. (<a href="/home/faq/#CalculatorWay"> This section</a> on the FAQ page
+            provides some additional information.) However, since it cannot take any person-,
+            project-, or company-specific aspects into account, it does not replace nor contradict
+            the need for a more detailed project assessment.</small>
+    </p>
+    <p>
+        <small>If you have questions, remarks, or something else that you want to say, then
+            you can leave a <a href="#disqus_thread">comment</a> on this page. Alternatively,
+            you may want to discuss specific aspects with other people in one of the <a href="~/home/forums">
+                forums</a>.</small>
+    </p>
+    <hr style="border: 1px solid #333" />
+</div>
+<div class="container">
+    <div class="row" style="margin-left: -10px">
+        <table class="table table-condensed">
+            <tbody>
+                <tr>
+                    <td class="td-label">
+                        <label class="control-label" for="inputHourPerDay">
+                            <strong>Staff costs (year)</strong></label>
+                    </td>
+                    <td class="td-value">
+                        <input class="input-mini ui-spinner-input" id="inputStaffCosts" style="width: 60px" value="@Model.Settings.StaffCostsPerYear" />
+                    </td>
+                    <td class="td-help">
+                        <img src="~/Content/images/question_button.png" class="help-button" alt="help-button"
+                            data-title="<h4>Staff costs per Year</h4>" data-content="<p><small>The companies' imputed costs for one staff person (avg.).</small></p>"
+                            data-trigger="hover" data-html="true" />
+                    </td>
+                    <td class="td-label">
+                        <label class="control-label" for="inputSize">
+                            <strong>Project Size (staff years)</strong></label>
+                    </td>
+                    <td class="td-value">
+                        <input class="input-mini ui-spinner-input" id="inputSize" value="@Model.Settings.ProjectSize" />
+                    </td>
+                    <td class="td-help" style="width: 50px">
+                        <img src="~/Content/images/question_button.png" class="help-button" alt="help-button"
+                            data-title="<h4>Project Size in Man-years</h4>" data-content="<p><small>The calculatory project size, in man-years.<p>If you rather have your project size in Lines of Code or Function Points, there are some handy conversion tables on the FAQ page. Just click the table icon to the right to go there.</p></small></p>" />
+                        <a href="/home/faq/#LookupTables">
+                            <img src="~/Content/images/icon_table.png" alt="table" style="width: 18px; height: 18px;
+                                margin-left: 4px; margin-top: 7px" /></a>
+                    </td>
+                    <td class="td-label">
+                        <label class="control-label" for="inputSurplus">
+                            <strong>Surplus Investment (percent)</strong></label>
+                    </td>
+                    <td class="td-value">
+                        <input class="input-mini ui-spinner-input" id="inputSurplus" value="@Model.Settings.AdditionalQualityEffort" />
+                    </td>
+                    <td class="td-help">
+                        <img src="~/Content/images/question_button.png" class="help-button" alt="help-button"
+                            data-title="<h4>Surplus Investment (%)</h4>" data-content="<p><small>Additional expenditure to be made for raising the project's code quality, in percent of the original project size." />
+                    </td>
+                    <td style="border: none; text-align: right; vertical-align: middle; padding-left: 50px;
+                        padding-right: 15px; height: 54px;" rowspan="2">
+                        <button type="button" class="btn btn-large btn-primary" style="width: 150px; padding-left: 8px"
+                            onclick="drawChart();">
+                            <img src="~/Content/images/refresh-icon.gif" style="height: 24px; width: 28px; margin-right: 8px" />
+                            <strong style="font-size: 18.5px; vertical-align: middle;">Refresh</strong>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td-label">
+                        <label class="control-label" for="selectCurrency">
+                            <strong>Currency</strong></label>
+                    </td>
+                    <td class="td-value">
+                        <select id="selectCurrency" class="input-small" style="width: 89px">
+                            <option id="AED">AED</option>
+                            <option id="AFN">AFN</option>
+                            <option id="ALL">ALL</option>
+                            <option id="AMD">AMD</option>
+                            <option id="ANG">ANG</option>
+                            <option id="AOA">AOA</option>
+                            <option id="ARS">ARS</option>
+                            <option id="AUD">AUD</option>
+                            <option id="AWG">AWG</option>
+                            <option id="AZN">AZN</option>
+                            <option id="BAM">BAM</option>
+                            <option id="BBD">BBD</option>
+                            <option id="BDT">BDT</option>
+                            <option id="BGN">BGN</option>
+                            <option id="BHD">BHD</option>
+                            <option id="BIF">BIF</option>
+                            <option id="BMD">BMD</option>
+                            <option id="BND">BND</option>
+                            <option id="BOB">BOB</option>
+                            <option id="BRL">BRL</option>
+                            <option id="BSD">BSD</option>
+                            <option id="BTC">BTC</option>
+                            <option id="BTN">BTN</option>
+                            <option id="BWP">BWP</option>
+                            <option id="BYR">BYR</option>
+                            <option id="BZD">BZD</option>
+                            <option id="CAD">CAD</option>
+                            <option id="CDF">CDF</option>
+                            <option id="CHF">CHF</option>
+                            <option id="CLF">CLF</option>
+                            <option id="CLP">CLP</option>
+                            <option id="CNY">CNY</option>
+                            <option id="COP">COP</option>
+                            <option id="CRC">CRC</option>
+                            <option id="CUP">CUP</option>
+                            <option id="CVE">CVE</option>
+                            <option id="CZK">CZK</option>
+                            <option id="DJF">DJF</option>
+                            <option id="DKK">DKK</option>
+                            <option id="DOP">DOP</option>
+                            <option id="DZD">DZD</option>
+                            <option id="EEK">EEK</option>
+                            <option id="EGP">EGP</option>
+                            <option id="ETB">ETB</option>
+                            <option id="EUR">EUR</option>
+                            <option id="FJD">FJD</option>
+                            <option id="FKP">FKP</option>
+                            <option id="GBP">GBP</option>
+                            <option id="GEL">GEL</option>
+                            <option id="GHS">GHS</option>
+                            <option id="GIP">GIP</option>
+                            <option id="GMD">GMD</option>
+                            <option id="GNF">GNF</option>
+                            <option id="GTQ">GTQ</option>
+                            <option id="GYD">GYD</option>
+                            <option id="HKD">HKD</option>
+                            <option id="HNL">HNL</option>
+                            <option id="HRK">HRK</option>
+                            <option id="HTG">HTG</option>
+                            <option id="HUF">HUF</option>
+                            <option id="IDR">IDR</option>
+                            <option id="ILS">ILS</option>
+                            <option id="INR">INR</option>
+                            <option id="IQD">IQD</option>
+                            <option id="IRR">IRR</option>
+                            <option id="ISK">ISK</option>
+                            <option id="JEP">JEP</option>
+                            <option id="JMD">JMD</option>
+                            <option id="JOD">JOD</option>
+                            <option id="JPY">JPY</option>
+                            <option id="KES">KES</option>
+                            <option id="KGS">KGS</option>
+                            <option id="KHR">KHR</option>
+                            <option id="KMF">KMF</option>
+                            <option id="KPW">KPW</option>
+                            <option id="KRW">KRW</option>
+                            <option id="KWD">KWD</option>
+                            <option id="KYD">KYD</option>
+                            <option id="KZT">KZT</option>
+                            <option id="LAK">LAK</option>
+                            <option id="LBP">LBP</option>
+                            <option id="LKR">LKR</option>
+                            <option id="LRD">LRD</option>
+                            <option id="LSL">LSL</option>
+                            <option id="LTL">LTL</option>
+                            <option id="LVL">LVL</option>
+                            <option id="LYD">LYD</option>
+                            <option id="MAD">MAD</option>
+                            <option id="MDL">MDL</option>
+                            <option id="MGA">MGA</option>
+                            <option id="MKD">MKD</option>
+                            <option id="MMK">MMK</option>
+                            <option id="MNT">MNT</option>
+                            <option id="MOP">MOP</option>
+                            <option id="MRO">MRO</option>
+                            <option id="MTL">MTL</option>
+                            <option id="MUR">MUR</option>
+                            <option id="MVR">MVR</option>
+                            <option id="MWK">MWK</option>
+                            <option id="MXN">MXN</option>
+                            <option id="MYR">MYR</option>
+                            <option id="MZN">MZN</option>
+                            <option id="NAD">NAD</option>
+                            <option id="NGN">NGN</option>
+                            <option id="NIO">NIO</option>
+                            <option id="NOK">NOK</option>
+                            <option id="NPR">NPR</option>
+                            <option id="NZD">NZD</option>
+                            <option id="OMR">OMR</option>
+                            <option id="PAB">PAB</option>
+                            <option id="PEN">PEN</option>
+                            <option id="PGK">PGK</option>
+                            <option id="PHP">PHP</option>
+                            <option id="PKR">PKR</option>
+                            <option id="PLN">PLN</option>
+                            <option id="PYG">PYG</option>
+                            <option id="QAR">QAR</option>
+                            <option id="RON">RON</option>
+                            <option id="RSD">RSD</option>
+                            <option id="RUB">RUB</option>
+                            <option id="RWF">RWF</option>
+                            <option id="SAR">SAR</option>
+                            <option id="SBD">SBD</option>
+                            <option id="SCR">SCR</option>
+                            <option id="SDG">SDG</option>
+                            <option id="SEK">SEK</option>
+                            <option id="SGD">SGD</option>
+                            <option id="SHP">SHP</option>
+                            <option id="SLL">SLL</option>
+                            <option id="SOS">SOS</option>
+                            <option id="SRD">SRD</option>
+                            <option id="STD">STD</option>
+                            <option id="SVC">SVC</option>
+                            <option id="SYP">SYP</option>
+                            <option id="SZL">SZL</option>
+                            <option id="THB">THB</option>
+                            <option id="TJS">TJS</option>
+                            <option id="TMT">TMT</option>
+                            <option id="TND">TND</option>
+                            <option id="TOP">TOP</option>
+                            <option id="TRY">TRY</option>
+                            <option id="TTD">TTD</option>
+                            <option id="TWD">TWD</option>
+                            <option id="TZS">TZS</option>
+                            <option id="UAH">UAH</option>
+                            <option id="UGX">UGX</option>
+                            <option id="USD">USD</option>
+                            <option id="UYU">UYU</option>
+                            <option id="UZS">UZS</option>
+                            <option id="VEF">VEF</option>
+                            <option id="VND">VND</option>
+                            <option id="VUV">VUV</option>
+                            <option id="WST">WST</option>
+                            <option id="XAF">XAF</option>
+                            <option id="XCD">XCD</option>
+                            <option id="XDR">XDR</option>
+                            <option id="XOF">XOF</option>
+                            <option id="XPF">XPF</option>
+                            <option id="YER">YER</option>
+                            <option id="ZAR">ZAR</option>
+                            <option id="ZMK">ZMK</option>
+                            <option id="ZMW">ZMW</option>
+                            <option id="ZWL">ZWL</option>
+                        </select>
+                    </td>
+                    <td class="td-help">
+                        <img src="~/Content/images/question_button.png" class="help-button" alt="help-button"
+                            data-title="<h4>Currency</h4>" data-content="<p><small>The calculation's currency code (ISO 4217).</small></p>" />
+                    </td>
+                    <td class="td-label">
+                        <label class="control-label" for="inputTime">
+                            <strong>System Lifetime (years)</strong></label>
+                    </td>
+                    <td class="td-value">
+                        <input class="input-mini ui-spinner-input" id="inputTime" value="@Model.Settings.Lifetime" />
+                    </td>
+                    <td class="td-help">
+                        <img src="~/Content/images/question_button.png" class="help-button" alt="help-button"
+                            data-title="<h4>System lifetime in years</h4>" data-content="<p><small>The length of the maintenance phase of the system, in years. This is the timespan between initial release and discontinuation of support.</small></p>" />
+                    </td>
+                    <td class="td-label">
+                        <label class="control-label" for="selectQuality">
+                            <strong>Project Quality Level</strong></label>
+                    </td>
+                    <td class="td-value">
+                        <select id="selectQuality" class="input-small">
+                            <option id="q1" value="1">1</option>
+                            <option id="q2" value="2">2</option>
+                            <option id="q3" value="3">3</option>
+                            <option id="q4" value="4">4</option>
+                        </select>
+                    </td>
+                    <td class="td-help">
+                        <img src="~/Content/images/question_button.png" class="help-button" alt="help-button"
+                            data-title="<h4>Project Quality Level (1-4)</h4>" data-content="<p><small>High-level estimation for the technical quality of the source code. The figures are interpreted as follows:</small></p><p><small><ul><li>1 - poor</li><li>2 - improvable</li><li>3 - fair</li><li>4 - good</li></ul></small></p>">
+                    </td>
+                </tr>
+                @*                <tr>
+                    <td style="border: none" />
+                    <td style="border: none" colspan="3">
+                        <button type="button" class="btn btn-large btn-primary" style="margin-top: 18px;
+                            width: 150px; padding-left: 8px" onclick="drawChart();">
+                            <img src="~/Content/images/refresh-icon.gif" style="height: 24px; width: 28px; margin-right: 8px" />
+                            <strong>Refresh</strong>
+                        </button>
+                    </td>
+                </tr>
+*@
+            </tbody>
+        </table>
+    </div>
+    <hr style="border: 1px solid lightgray; margin-top: 0" />
+    <div class="row" style="margin: 0">
+        <div id="alert-error" class="alert alert-error" style="display: none">
+            <button class="close" onclick="$('#alert-error').hide(); return false;">
+                ×</button>
+            <p>
+                <strong>Error</strong></p>
+            <p>
+                An error occured while calculating your settings, the data were not updated. We're
+                sorry for the inconvenience.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div id="chart_container" class="span6" style="margin-bottom: 16px">
+        </div>
+        <div id="chart2_container" class="span6" style="margin-bottom: 16px">
+        </div>
+        <hr style="border: 1px solid lightgray" />
+    </div>
+    <div class="row">
+        <div class="span7" style="margin-left: 14px">
+            <h3 style="margin-top: 0">
+                Key Facts</h3>
+            <p>
+                If you invest an additional amount of <strong><span id="surplus"></span>&nbsp;<span
+                    id="currency"></span></strong>, you can expect to
+                <ul>
+                    <li>save a total amount of <strong><span id="totalSaving"></span>&nbsp;<span id="savingCurrency"></span></strong>
+                        over the expected project lifetime of <strong><span id="lifetime"></span>&nbsp;years</strong>.
+                        This is equal to a Return on Investment of <strong><span id="roi"></span></strong>
+                        .</li>
+                    <li>yearly save an average amount of <strong><span id="avgSaving"></span>&nbsp;<span
+                        id="savingCurrency2"></span></strong> on maintenance (ranging from <strong><span
+                            id="minSaving"></span></strong>&nbsp;to&nbsp;<strong><span id="maxSaving"></span>&nbsp;<span
+                                id="savingCurrency3"></span></strong>).</li>
+                    <li>reach financial break-even after <strong><span id="breakEvenPoint"></span>&nbsp;years</strong>
+                        (compared to when no additional investment is made).</li>
+                </ul>
+            </p>
+            <p>
+                <small>The following values are assumed for C#:</small>
+            </p>
+            <ul>
+                <li><small>Estimated project size in Function Points: <strong><span id="fp"></span></strong>
+                    .</small></li>
+                <li><small>Estimated project size in Source Lines of Code: <strong><span id="sloc"></span>
+                </strong>.</small></li>
+            </ul>
+        </div>
+        <div class="span5" style="margin-left: 36px">
+            <h3 style="margin-top: 0">
+                Cost Breakdown</h3>
+            <table class="table summary-table">
+                <thead>
+                    <tr>
+                        <th>
+                        </th>
+                        <th class="td-baseline td-baseline-top">
+                            Baseline
+                        </th>
+                        <th class="td-surplus td-surplus-top">
+                            Surplus
+                        </th>
+                        <th class="td-diff td-diff-top">
+                            Diff.
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <strong>Development</strong>
+                        </td>
+                        <td class="td-baseline">
+                            <span id="devOrg"></span>
+                        </td>
+                        <td class="td-surplus">
+                            <span id="devMod"></span>
+                        </td>
+                        <td class="td-diff">
+                            <span id="devDiff" style="color: red"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Maintenance</strong>
+                        </td>
+                        <td class="td-baseline">
+                            <span id="maintOrg"></span>
+                        </td>
+                        <td class="td-surplus">
+                            <span id="maintMod"></span>
+                        </td>
+                        <td class="td-diff">
+                            <span id="maintDiff"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Total</strong>
+                        </td>
+                        <td class="td-baseline">
+                            <strong><span id="totalOrg"></span></strong>
+                        </td>
+                        <td class="td-surplus">
+                            <strong><span id="totalMod"></span></strong>
+                        </td>
+                        <td class="td-diff">
+                            <strong><span id="totalDiff"></span></strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Maint. %</strong>
+                        </td>
+                        <td class="td-baseline td-baseline-bottom">
+                            <span id="maintPercentOrg"></span>
+                        </td>
+                        <td class="td-surplus td-surplus-bottom">
+                            <span id="maintPercentMod"></span>
+                        </td>
+                        <td class="td-diff td-diff-bottom">
+                            -
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <br />
+        <hr style="border: 1px solid #333" />
+        <br />
+        <div>
+            @Disqus.ShowComments(ViewBag.DisqusName)
+        </div>
+    </div>
+    <input type="hidden" id="data" value="@CalculatorController.CalcDataToJson(Model)" />
+</div>
+<script src="/Scripts/jquery-1.9.1.js"></script>
+<script src="/Scripts/jquery-ui.js"></script>
+<script src="/Scripts/bootstrap-tooltip.js"></script>
+<script src="/Scripts/bootstrap-popover.js"></script>
+<script src="/scripts/Highcharts-3.0.1/js/highcharts.js"></script>
+<script src="/scripts/Highcharts-3.0.1/js/modules/exporting.js"></script>
+<script src="/Scripts/numberformatter.js"></script>
+<script src="/Scripts/calculator.js"></script>
+<script type="text/javascript">
+    $('.help-button').popover({ placement: 'bottom', trigger: 'hover', html: 'true' });
+    $('#inputStaffCosts').spinner({ min: 1000, max: 200000, step: 1000 });
+    $('#inputSize').spinner({ min: 1 });
+    $('#inputTime').spinner({ min: 2, max: 35 });
+    $('#inputSurplus').spinner({ min: 10, max: 100, step: 5 });
+
+    $(document).ready(function () {
+        var jsonData = $.parseJSON($('#data').val());
+
+        $('#' + jsonData.currency).attr('selected', 'selected');
+        $('#q' + jsonData.quality).attr('selected', 'selected');
+
+        createChart1();
+        createChart2();
+        refreshData(jsonData);
+    });
+</script>

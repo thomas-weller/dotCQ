@@ -1,0 +1,261 @@
+﻿<p>
+    First of all, it has to be stressed again that the Calculator on this website can
+    only give you a rough estimate of what the likely consequences of code quality improvements
+    might be. On top of that, a more appropriate calculation would take dozens of company-
+    and project-specific aspects into account, and therefore might come to different
+    results (In fact, for bigger projects, it is strongly advisable to invest upfront
+    in more carefully assessing the project). However, the calculation is based on industry-averages
+    and some reasonable assumptions, and therefore gives you some suitable indications
+    of what can be expected in terms of costs and maintenance effort.
+</p>
+<h5>
+    Basic Assumptions</h5>
+<p>
+    <ul>
+        <li>One man-month is calculated with 160 man-hours (8 hours per day, 20 days per month).</li>
+        <li>In C#, one Function Point on average is roughly equivalent to 55 Source Lines of
+            Code (SLOC).&nbsp;<sup><small>1</small></sup></li>
+        <li>In C#, it roughly takes 15 development-hours to produce one Function Point (FP).&nbsp;<sup><small>2</small></sup></li>
+    </ul>
+    Or, put another way: For C#, the average productivity is assumed to be <strong>10.67
+        FPs/month</strong>, or <strong>590 SLOC/month</strong> respectively.
+</p>
+<p>
+    --------<br />
+    <sup><small>1</small></sup><small>&nbsp;<a href="http://www.qsm.com/resources/function-point-languages-table">Function
+        Point Languages Table</a></small><br />
+    <sup><small>2</small></sup><small>&nbsp;<a href="http://www.drdobbs.com/jvm/the-comparative-productivity-of-programm/240005881">The
+        Comparative Productivity of Programming Languages</a></small>
+</p>
+<h5>
+    Project Size</h5>
+<p>
+    Before we can actually calculate any further metrics on the project, its size has
+    to be determined. A software system's size can be expressed in one of three ways:
+</p>
+<ul>
+    <li>Physical: in Source Lines of Code (SLOC) - Size<sub><small>&nbsp;pyhs</small></sub></li>
+    <li>Functional: in Function Points (FPs) - Size<sub><small>&nbsp;func</small></sub></li>
+    <li>By Effort: in man-years - Size<sub><small>&nbsp;time</small></sub></li>
+</ul>
+<p>
+    The way in which the system size metric is available to you, depends on the concrete
+    circumstances. However, all the above measures convey the same fact and therefore
+    are easily convertible into each other. The following table shows the applied formulas:
+</p>
+<table class="table-bordered table-condensed table-striped" style="text-align: center;
+    vertical-align: middle; border-spacing: 1px">
+    <thead style="background-color: lightgrey">
+        <tr style="height: 40px">
+            <th />
+            <th>
+                Size<sub><small>&nbsp;pyhs</small></sub>
+            </th>
+            <th>
+                Size<sub><small>&nbsp;func</small></sub>
+            </th>
+            <th>
+                Size<sub><small>&nbsp;time</small></sub>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style="height: 50px">
+            <td style='background-color: lightgrey; font-weight: bold; width: 200px'>
+                Size<sub><small>&nbsp;pyhs</small></sub>
+            </td>
+            <td style="background-color: rgb(222, 222, 222); width: 200px" />
+            <td style="width: 200px">
+                <math>
+                 <semantics>
+                  <mrow>
+                   <msub>
+                    <mi mathvariant="italic">Size</mi>
+                    <mrow>
+                     <mi mathvariant="italic">func</mi>
+                    </mrow>
+                   </msub>
+                   <mrow>
+                    <mi/>
+                    <mo stretchy="false">×</mo>
+                    <mi/>
+                   </mrow>
+                   <mn>55</mn>
+                  </mrow>
+                  <annotation encoding="StarMath 5.0">Size_{func} `times` 55</annotation>
+                 </semantics>
+                </math>
+            </td>
+            <td>
+                <math>
+                  <semantics>
+                    <mrow>
+                      <msub>
+                        <mi mathvariant="italic">Size</mi>
+                        <mrow>
+                          <mi mathvariant="italic">time</mi>
+                        </mrow>
+                      </msub>
+                      <mrow>
+                        <mi/>
+                        <mo stretchy="false">×</mo>
+                        <mi/>
+                      </mrow>
+                      <mn>12</mn>
+                      <mrow>
+                        <mi/>
+                        <mo stretchy="false">×</mo>
+                        <mi/>
+                      </mrow>
+                      <mn>590</mn>
+                    </mrow>
+                    <annotation encoding="StarMath 5.0">Size_{time} `times` 12 `times` 590</annotation>
+                  </semantics>
+                </math>
+            </td>
+        </tr>
+        <tr style="height: 50px">
+            <td style='background-color: lightgrey; font-weight: bold'>
+                Size<sub><small>&nbsp;func</small></sub>
+            </td>
+            <td>
+                <math>
+                    <semantics>
+                        <mrow>
+                            <mfrac>
+                                <msub>
+                                    <mi mathvariant="italic">Size</mi>
+                                    <mrow>
+                                        <mi mathvariant="italic">phys</mi>
+                                    </mrow>
+                                </msub>
+                                <mn>55</mn>
+                            </mfrac>
+                        </mrow>
+                        <annotation encoding="StarMath 5.0">Size_{phys} over 55</annotation>
+                    </semantics>
+                </math>
+            </td>
+            <td style="background-color: rgb(222, 222, 222)" />
+            <td>
+                <math>
+                    <semantics>
+                    <mrow>
+                    <msub>
+                    <mi mathvariant="italic">Size</mi>
+                    <mrow>
+                        <mi mathvariant="italic">time</mi>
+                    </mrow>
+                    </msub>
+                    <mrow>
+                    <mi/>
+                    <mo stretchy="false">×</mo>
+                    <mi/>
+                    </mrow>
+                    <mn>12</mn>
+                    <mrow>
+                    <mi/>
+                    <mo stretchy="false">×</mo>
+                    <mi/>
+                    </mrow>
+                    <mn>10.67</mn>
+                    </mrow>
+                    <annotation encoding="StarMath 5.0">Size_{time} `times` 12 `times` 10.67 </annotation>
+                    </semantics>
+                </math>
+            </td>
+        </tr>
+        <tr style="height: 50px">
+            <td style='background-color: lightgrey; font-weight: bold'>
+                Size<sub><small>&nbsp;time</small></sub>
+            </td>
+            <td>
+                <math>
+                 <semantics>
+                  <mrow>
+                   <mfrac>
+                    <mrow>
+                     <mrow>
+                      <mo stretchy="false">(</mo>
+                      <mrow>
+                       <mrow>
+                        <mn>1</mn>
+                        <mo stretchy="false">/</mo>
+                        <mn>590</mn>
+                       </mrow>
+                      </mrow>
+                      <mo stretchy="false">)</mo>
+                     </mrow>
+                     <mrow>
+                      <mi/>
+                      <mo stretchy="false">×</mo>
+                      <mi/>
+                     </mrow>
+                     <msub>
+                      <mi mathvariant="italic">Size</mi>
+                      <mrow>
+                       <mi mathvariant="italic">phys</mi>
+                      </mrow>
+                     </msub>
+                    </mrow>
+                    <mn>12</mn>
+                   </mfrac>
+                  </mrow>
+                  <annotation encoding="StarMath 5.0">{(1 / 590) `times` Size_{phys}} over 12
+                </annotation>
+                 </semantics>
+                </math>
+            </td>
+            <td>
+                <math>
+                 <semantics>
+                  <mrow>
+                   <mfrac>
+                    <mrow>
+                     <msub>
+                      <mi mathvariant="italic">Size</mi>
+                      <mrow>
+                       <mi mathvariant="italic">func</mi>
+                      </mrow>
+                     </msub>
+                     <mrow>
+                      <mi/>
+                      <mo stretchy="false">/</mo>
+                      <mi/>
+                     </mrow>
+                     <mrow>
+                      <mn>10.67</mn>
+                     </mrow>
+                    </mrow>
+                    <mn>12</mn>
+                   </mfrac>
+                  </mrow>
+                  <annotation encoding="StarMath 5.0">{ize_{fun} `/` {10.67}} over 12
+                </annotation>
+                 </semantics>
+                </math>
+            </td>
+            <td style="background-color: rgb(222, 222, 222)" />
+        </tr>
+    </tbody>
+</table>
+<p style="margin-left: 8px; width: 800px">
+    <small><small>Formulas used to convert the various possible size measures. The
+                     leftmost column denotes the outcome type of the calculation, the top row refers
+        to the available input. (The values are based on the data given above.)</small></small>
+</p>
+<p>
+    -- <strong>Note</strong>: For your convenience, the next question provides some
+    handy conversion tables. --
+</p>
+<h5>
+    Calculation method</h5>
+<p>
+    Once project size is determined, the concrete calculation method of the Calculator
+    is quite involved. It is based on some industry averages as well as on some reasonable
+    presumptions. With some minor modifications, it essentially follows the method found
+    in this research study:<br />
+    <em>Ariadi Nugroho, Tobias Kuipers, and Joost Visser. 2011. <a href="http://www.sig.eu/blobs/Research/Scientific%20publication/2011/icsews11mtdfull-p005-nugroho-1.pdf">
+        An Empirical Model of Technical Debt and Interest.</a> In: Proceedings of the 2nd
+        Workshop on Managing Technical Debt, pp. 1-8.</em>
+</p>

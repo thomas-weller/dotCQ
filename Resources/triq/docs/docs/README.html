@@ -1,0 +1,698 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+body{
+    margin: 0 auto;
+    font-family: Georgia, Palatino, serif;
+    color: #444444;
+    line-height: 1;
+    max-width: 960px;
+    padding: 5px;
+    background: #f7f8f9;
+}
+h1, h2, h3, h4 {
+    color: #111111;
+    font-weight: 400;
+}
+h1, h2, h3, h4, h5, p {
+    margin-bottom: 16px;
+    padding: 0;
+}
+h1 {
+    font-size: 28px;
+}
+h2 {
+    font-size: 22px;
+    margin: 20px 0 6px;
+}
+h3 {
+    font-size: 21px;
+}
+h4 {
+    font-size: 18px;
+}
+h5 {
+    font-size: 16px;
+}
+a {
+    color: #0099ff;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+a:hover {
+    text-decoration: none;
+    color: #ff6600;
+}
+a:visited {
+    color: purple;
+}
+ul, ol {
+    padding: 0;
+    margin: 0;
+}
+li {
+    line-height: 24px;
+    margin-left: 44px;
+}
+li ul, li ul {
+    margin-left: 24px;
+}
+p, ul, ol {
+    font-size: 14px;
+    line-height: 20px;
+    max-width: 540px;
+}
+pre {
+    padding: 0px 24px;
+    max-width: 800px;
+    white-space: pre-wrap;
+}
+code {
+    font-family: Consolas, Monaco, Andale Mono, monospace;
+    line-height: 1.5;
+    font-size: 13px;
+}
+aside {
+    display: block;
+    float: right;
+    width: 390px;
+}
+blockquote {
+    border-left:.5em solid #eee;
+    padding: 0 2em;
+    margin-left:0;
+    max-width: 476px;
+}
+blockquote  cite {
+    font-size:14px;
+    line-height:20px;
+    color:#bfbfbf;
+}
+blockquote cite:before {
+    content: '\2014 \00A0';
+}
+
+blockquote p {  
+    color: #666;
+    max-width: 460px;
+}
+hr {
+    width: 540px;
+    text-align: left;
+    margin: 0 auto 0 0;
+    color: #999;
+}
+
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline;
+  *vertical-align: middle;
+}
+button, input {
+  line-height: normal;
+  *overflow: visible;
+}
+button::-moz-focus-inner, input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button;
+}
+input[type=checkbox], input[type=radio] {
+  cursor: pointer;
+}
+/* override default chrome & firefox settings */
+input:not([type="image"]), textarea {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+label,
+input,
+select,
+textarea {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: normal;
+  margin-bottom: 18px;
+}
+input[type=checkbox], input[type=radio] {
+  cursor: pointer;
+  margin-bottom: 0;
+}
+input[type=text],
+input[type=password],
+textarea,
+select {
+  display: inline-block;
+  width: 210px;
+  padding: 4px;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 18px;
+  height: 18px;
+  color: #808080;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+select, input[type=file] {
+  height: 27px;
+  line-height: 27px;
+}
+textarea {
+  height: auto;
+}
+
+/* grey out placeholders */
+:-moz-placeholder {
+  color: #bfbfbf;
+}
+::-webkit-input-placeholder {
+  color: #bfbfbf;
+}
+
+input[type=text],
+input[type=password],
+select,
+textarea {
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+  transition: border linear 0.2s, box-shadow linear 0.2s;
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+input[type=text]:focus, input[type=password]:focus, textarea:focus {
+  outline: none;
+  border-color: rgba(82, 168, 236, 0.8);
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+  -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+
+/* buttons */
+button {
+  display: inline-block;
+  padding: 4px 14px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.05);
+  background-color: #0064cd;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#049cdb), to(#0064cd));
+  background-image: -moz-linear-gradient(top, #049cdb, #0064cd);
+  background-image: -ms-linear-gradient(top, #049cdb, #0064cd);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #049cdb), color-stop(100%, #0064cd));
+  background-image: -webkit-linear-gradient(top, #049cdb, #0064cd);
+  background-image: -o-linear-gradient(top, #049cdb, #0064cd);
+  background-image: linear-gradient(top, #049cdb, #0064cd);
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  border: 1px solid #004b9a;
+  border-bottom-color: #003f81;
+  -webkit-transition: 0.1s linear all;
+  -moz-transition: 0.1s linear all;
+  transition: 0.1s linear all;
+  border-color: #0064cd #0064cd #003f81;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+button:hover {
+  color: #fff;
+  background-position: 0 -15px;
+  text-decoration: none;
+}
+button:active {
+  -webkit-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+/* CSS stylesheet is based on Kevin Burke's Markdown.css project (http://kevinburke.bitbucket.org/markdowncss) */
+</style>
+</head>
+<body>
+<h1>TRIQ Bootstrap Template</h1>
+
+<hr />
+
+<p><em>Theme name: TRIQ<br />
+Author: Oskar Żabik<br />
+Created: 11/01/2012<br />
+Version: 1.0</em></p>
+
+<hr />
+
+<p>Thank you for your purchase! If you have any questions about this template, feel free to e-mail me at oskar.zabik@gmail.com.</p>
+
+<hr />
+
+<h2>Table of contents</h2>
+
+<ol>
+<li>HTML Main Structure</li>
+<li>CSS Files</li>
+<li>SASS &amp; COMPASS</li>
+<li>JavaScript Files</li>
+<li>Components
+<ol>
+<li>Globals</li>
+<li>Blog</li>
+</ol></li>
+<li>Fonts</li>
+<li>Browser Compatibility   </li>
+</ol>
+
+<hr />
+
+<h2>1. HTML Main Structure</h2>
+
+<p>The HTML Structure for each page looks as follows:</p>
+
+<ul>
+<li>Meta </li>
+<li>Link to CSS files<br />
+<ul>
+<li>bootstrap.css </li>
+<li>bootstrap-responsive.css</li>
+<li>triq.css  </li>
+<li>triq-responsive.css</li>
+</ul></li>
+<li>HTML5 shiv</li>
+<li>Favicon</li>
+<li>.before-navbar</li>
+<li>.navbar (with menu-button visible only on mobile devices)</li>
+<li>page specifix content</li>
+<li>JavaScript libraries</li>
+<li>footer ( with menu visible only on mobile devices)</li>
+</ul>
+
+<h2>2. CSS files</h2>
+
+<p>You will find a couple of CSS files in template:</p>
+
+<ul>
+<li>bootstrap.css</li>
+<li>bootstrap-responsive.css</li>
+<li>font-awesome.css</li>
+<li>websymbols.css</li>
+<li>triq.css</li>
+<li>triq-responsive.css</li>
+</ul>
+
+<p>Inside <code>triq.css</code> you'll find style guide with keywords to search if you'd like to find particular styles. Use them to easly change your website.</p>
+
+<h2>3. SASS &amp; COMPASS</h2>
+
+<p>Triq was written using <a href="http://sass-lang.com/">Sass</a> with <a href="http://compass-style.org/">Compass</a> plugin. Working with Sass is not required, you can easly edit everything without touching Sass files.
+Sass files are located inside <code>sass</code> folder. You will find there:</p>
+
+<ul>
+<li>font-awesome.scss (Font Awesome iconic font styles)</li>
+<li>triq.scss (main template styles)</li>
+<li>triq-responsive.scss</li>
+<li>includes:
+<ul>
+<li>base.scss (containes defined variables, used around every other file)</li>
+<li>blog.scss </li>
+<li>portfolio.scss</li>
+<li>contact.scss</li>
+<li>font.scss</li>
+</ul></li>
+</ul>
+
+<p>Those files are meant to generate three <code>CSS</code> files: font-awesome.css, triq.css and triq-responsive.css.</p>
+
+<h2>4. JavaScript Files</h2>
+
+<ul>
+<li><a href="http://jquery.com">jQuery 1.8.2</a></li>
+<li><a href="http://gsgd.co.uk/sandbox/jquery/easing/">jQuery easing 1.3</a></li>
+<li>bootstrap.js</li>
+<li><a href="http://razorjack.net/quicksand/">QuickSand plugin</a></li>
+<li><a href="http://flesler.blogspot.com/2007/10/jqueryscrollto.html">scrollTo</a> and <a href="http://flesler.blogspot.com/2007/10/jquerylocalscroll-10.html">localscroll</a> plugins</li>
+<li>triq.js</li>
+</ul>
+
+<h2>5. Components</h2>
+
+<h5>GLOBALS</h5>
+
+<ul>
+<li><h5>Responsive navigation:</h5>
+
+<p>Triq has different approach to responsive navigation than default Bootstrap navbar (feel free to use bootstrap's though). On top button "Go to nav" will be displayed, while navigation itself will be at the bottom of the page. This way user doesn't have to scroll top/bottom on smaller screens. Here's the code:</p>
+
+<pre><code>&lt;div class="navbar navbar-fixed-top"&gt;
+  &lt;div class="navbar-inner"&gt;
+    &lt;div class="container"&gt;
+      &lt;a class="brand" href="#"&gt;&lt;img src="logo6.png" alt="TRIQ template"&gt;&lt;/a&gt;
+      &lt;a href="#footer-nav" class="btn btn-simple visible-phone pull-right"&gt;Jump to menu&lt;/a&gt;
+      &lt;ul class="nav pull-right hidden-phone"&gt;
+        &lt;li&gt;&lt;a href="index.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        ...
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre></li>
+</ul>
+
+<p>And footer:</p>
+
+<pre><code>    &lt;div class="background-white footer"&gt;
+        &lt;div class="container"&gt;
+            &lt;p class="pull-left"&gt;This was TRIQ - Awesome bootstrap template.&lt;/p&gt;
+            &lt;p class="pull-right"&gt;&lt;a id="toplink" href="#"&gt;Back to top&lt;/a&gt;&lt;/p&gt;
+
+            &lt;ul id="footer-nav" class="nav visible-phone"&gt;
+                &lt;hr&gt;
+                &lt;h3 class="centered"&gt;Menu&lt;/h3&gt;
+                &lt;li class="active"&gt;&lt;a href="index.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                ...
+            &lt;/ul&gt;
+        &lt;/div&gt;
+  &lt;/div&gt;
+</code></pre>
+
+<ul>
+<li><h5>Slider with shadow</h5>
+
+<p>To add nice shadow to your slider, simple add <code>add-shadow</code> class. The rest of the markup is the same as on <a href="http://twitter.github.com/bootstrap/javascript.html#carousel">WrapBootstrap's page </a>:</p>
+
+<p><img src="img/slider_shadow.png" alt="" /></p>
+
+<pre><code>&lt;div id="myCarousel" class="carousel slide add-shadow"&gt;
+    &lt;!-- Carousel items --&gt;
+    &lt;div class="carousel-inner"&gt;
+        &lt;div class="active item"&gt;…&lt;/div&gt;
+        &lt;div class="item"&gt;…&lt;/div&gt;
+        &lt;div class="item"&gt;…&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- Carousel nav --&gt;
+    &lt;a class="carousel-control left" href="#myCarousel" data-slide="prev"&gt;&amp;lsaquo;&lt;/a&gt;
+    &lt;a class="carousel-control right" href="#myCarousel" data-slide="next"&gt;&amp;rsaquo;&lt;/a&gt;
+&lt;/div&gt;
+</code></pre></li>
+<li><h5>Quote</h5>
+
+<p><img src="img/quote.png" alt="" /></p>
+
+<pre><code>&lt;div class="quote-cloud"&gt;
+    &lt;blockquote&gt;
+        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit.&lt;/p&gt;
+    &lt;/blockquote&gt;
+    &lt;div class="attribution"&gt;
+        &lt;p class="author"&gt;John Smith&lt;/p&gt;
+        &lt;cite&gt;&lt;a href="#" title="Some website"&gt;Some website&lt;/a&gt;&lt;/cite&gt;
+        &lt;div class="thumb"&gt;
+            &lt;img src="img/user_thumbnail.png"&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre></li>
+<li><h5>Buttons</h5>
+
+<ul>
+<li><p>Triq adds additional buttons styles. Just add <code>.btn-simple</code> class to the button.
+<img src="img/btn_simple.png" alt="" /> </p>
+
+<pre><code>&lt;a href="#" class="btn btn-simple btn-info"&gt;Info&lt;/a&gt;
+&lt;a href="#" class="btn btn-simple btn-success"&gt;Read more&lt;/a&gt;
+&lt;a href="#" class="btn btn-simple btn-alert"&gt;Read more&lt;/a&gt;
+&lt;a href="#" class="btn btn-simple btn-warning"&gt;Read more&lt;/a&gt;
+&lt;a href="#" class="btn btn-simple btn-inverse"&gt;Read more&lt;/a&gt;
+&lt;a href="#" class="btn btn-simple btn-danger"&gt;Read more&lt;/a&gt;
+</code></pre>
+
+<p>You can also add class <code>.btn-wide</code> to make button 100% width block element.</p></li>
+<li><p>CSS3 Animated buttons (with social colors - for ex. add <code>.color-facebook</code>)
+<img src="img/animated_buttons.png" alt="" /></p>
+
+<pre><code>&lt;a href="#" class="icon-squared color-facebook"&gt;&lt;article&gt;&lt;span&gt;&lt;i class="icon-facebook"&gt;&lt;/i&gt;&lt;/span&gt;&lt;/article&gt;&lt;/a&gt;
+&lt;a href="#" class="icon-squared color-twitter"&gt;&lt;article&gt;&lt;span&gt;&lt;i class="icon-twitter"&gt;&lt;/i&gt;&lt;/span&gt;&lt;/article&gt;&lt;/a&gt;
+&lt;a href="#" class="icon-squared color-pinterest"&gt;&lt;article&gt;&lt;span&gt;&lt;i class="icon-pinterest"&gt;&lt;/i&gt;&lt;/span&gt;&lt;/article&gt;&lt;/a&gt;
+&lt;a href="#" class="icon-squared color-github"&gt;&lt;article&gt;&lt;span&gt;&lt;i class="icon-github"&gt;&lt;/i&gt;&lt;/span&gt;&lt;/article&gt;&lt;/a&gt;
+&lt;a href="#" class="icon-squared color-linkedin"&gt;&lt;article&gt;&lt;span&gt;&lt;i class="icon-linkedin"&gt;&lt;/i&gt;&lt;/span&gt;&lt;/article&gt;&lt;/a&gt;
+</code></pre></li>
+<li><p>Combining Font Awesome and CSS styles you can create another social buttons:
+<img src="img/social_small_buttons.png" alt="" /></p>
+
+<pre><code>&lt;a href="#"&gt;&lt;i class="icon-twitter-sign color-twitter"&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;a href="#"&gt;&lt;i class="icon-facebook-sign color-facebook"&gt;&lt;/i&gt;&lt;/a&gt;
+&lt;a href="#"&gt;&lt;i class="icon-linkedin-sign color-linkedin"&gt;&lt;/i&gt;&lt;/a&gt;
+</code></pre>
+
+<p>There are two avaible effects hover (class starting with <code>hover-</code>) and normal. The first one changes color of a button just when hovering over, the second one changes it permanently:</p>
+
+<ul>
+<li>.hover-color-facebook  </li>
+<li>.hover-color-twitter </li>
+<li>.hover-color-pinterest </li>
+<li>.hover-color-github   </li>
+<li>.hover-color-linkedin </li>
+<li>.color-facebook</li>
+<li>.color-twitter  </li>
+<li>.color-pinterest </li>
+<li>.color-github   </li>
+<li>.color-linkedin</li>
+</ul></li>
+</ul></li>
+<li><h5>CSS3 Animated Menus</h5>
+
+<p>Use them to display some short info about your company/app. Keep in mind, that CSS3 animations will only work in modern browsers.</p></li>
+</ul>
+
+<p><img src="img/css_buttons.png" alt="" /></p>
+
+<p>markup:</p>
+
+<pre><code>&lt;ul class="ca-menu unstyled"&gt;
+    &lt;li class="span3"&gt;
+        &lt;a href="#well-coded"&gt;
+            &lt;span class="ca-icon"&gt;H&lt;/span&gt;
+            &lt;div class="ca-content"&gt;
+                &lt;h2 class="ca-main"&gt;Well coded&lt;/h2&gt;
+                &lt;h3 class="ca-sub"&gt;Crafted with passion&lt;/h3&gt;
+            &lt;/div&gt;
+        &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class="span3 active"&gt;
+        &lt;a href="#docs"&gt;
+            &lt;span class="ca-icon" id="heart"&gt;N&lt;/span&gt;
+            &lt;div class="ca-content"&gt;
+                &lt;h2 class="ca-main"&gt;Well documented&lt;/h2&gt;
+                &lt;h3 class="ca-sub"&gt;You'll never be confused again&lt;/h3&gt;
+            &lt;/div&gt;
+        &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class="span3"&gt;
+        &lt;a href="#future"&gt;
+            &lt;span class="ca-icon"&gt;V&lt;/span&gt;
+            &lt;div class="ca-content"&gt;
+                &lt;h2 class="ca-main"&gt;Future is today&lt;/h2&gt;
+                &lt;h3 class="ca-sub"&gt;HTML5 &amp; CSS3&lt;/h3&gt;
+            &lt;/div&gt;
+        &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class="span3"&gt;
+        &lt;a href="#purchase"&gt;
+            &lt;span class="ca-icon"&gt;L&lt;/span&gt;
+            &lt;div class="ca-content"&gt;
+                &lt;h2 class="ca-main"&gt;Purchase&lt;/h2&gt;
+                &lt;h3 class="ca-sub"&gt;What are you waiting for?&lt;/h3&gt;
+            &lt;/div&gt;
+        &lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<ul>
+<li><h5>Backgrounds</h5>
+
+<p>There are classes with predefined background colors you can use like this:</p>
+
+<pre><code>    &lt;div class="background-white"&gt;
+        &lt;div class="container&gt;
+            Your content goes here
+        &lt;/div&gt;
+    &lt;/div&gt;
+</code></pre>
+
+<p>Avaible classes are:</p>
+
+<ul>
+<li>.background-grey</li>
+<li>.background-light-grey</li>
+<li>.background-dark</li>
+<li>.background-blue</li>
+</ul></li>
+<li><h5>Info-centered</h5>
+
+<p>Combining this class with buttons and text, you could create something like this:
+<img src="img/info_centered.png" alt="" /></p>
+
+<div class="info-centered">
+    <p>Where can you find us?</p>
+    <a href="#" class="icon-squared color-facebook">
+      <article><span><i class="icon-facebook"></i></span></article></a>
+    <a href="#" class="icon-squared color-twitter">
+      <article><span><i class="icon-twitter"></i></span></article></a>
+    <a href="#" class="icon-squared color-pinterest">
+      <article><span><i class="icon-pinterest"></i></span></article></a>
+</div>  </li>
+</ul>
+
+<h5>2. BLOG</h5>
+
+<p>Blog posts comes with two options - title on the left and title on the right. You can also change main post color, examples shown below.
+<img src="img/blog.png" alt="" /></p>
+
+<pre><code>  &lt;!-- le Blog Post --&gt;
+  &lt;div class="row blog-excerpt"&gt;
+    &lt;!-- le title --&gt;
+    &lt;div class="span6"&gt;
+      &lt;div class="title-block title-left title-dark"&gt;
+        &lt;div class="posted-on"&gt;26&lt;span&gt;JUL&lt;/span&gt;&lt;/div&gt;
+        &lt;h2&gt;&lt;a href="#"&gt;This blog post awesome title&lt;/a&gt;&lt;/h2&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- le content --&gt;
+    &lt;div class="content span6"&gt;
+      &lt;!-- le image --&gt;
+      &lt;div class="post-image"&gt;
+        &lt;!-- Recommended img width == 600px --&gt;
+        &lt;img src="post image" alt=""&gt;
+      &lt;/div&gt;
+      &lt;h4&gt;Some short introduction to text&lt;/h4&gt;
+      &lt;p&gt;Your content goes here.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+</code></pre>
+
+<h5>3. PORTFOLIO</h5>
+
+<p>Portfolio comes in two versions - full width and thumbnails</p>
+
+<ul>
+<li><p><strong>Thumbnails</strong> - filterable portfolio using Quicksand plugin. Recommended thumbnails size: 300x190px.
+<img src="img/portfolio_thumbnails.png" alt="" /></p>
+
+<pre><code>&lt;!-- portfolio filtering --&gt;
+&lt;ul id="portfolio-nav" class="nav nav-tabs nav-stacked"&gt;
+    &lt;li data-type="all"&gt;&lt;a href="#" class="all"&gt;All&lt;/a&gt;&lt;/li&gt;
+    &lt;li data-type="util"&gt;&lt;a href="#"&gt;Utilities&lt;/a&gt;&lt;/li&gt;
+    ...
+&lt;/ul&gt;
+
+
+&lt;!-- portfolio items --&gt;
+    &lt;ul id="applications" class="thumbnails portfolio-thumbnails"&gt;
+    &lt;li data-id="id-1" class="portfolio-item" data-type="util"&gt;
+        &lt;div class="image-wrapper"&gt;
+          &lt;img src="demo_img/portfolio/1.jpg" width="300" height="190" alt=""&gt;
+          &lt;a href="#"&gt;&lt;span&gt;View project&lt;/span&gt;&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li data-id="id-1" class="portfolio-item" data-type="util"&gt;
+        ...
+    &lt;/li&gt;
+    ...
+&lt;/ul&gt;
+</code></pre></li>
+<li><p><strong>Full width</strong>
+<img src="img/portfolio_fullwidth.png" alt="" /></p>
+
+<pre><code>&lt;div class="portfolio-item full-width text-left"&gt;
+    &lt;div class="left text"&gt;
+        &lt;div class="desc"&gt;
+            &lt;h2&gt;title&lt;/h2&gt;
+            &lt;p&gt;description&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="right"&gt;
+        &lt;div class="image-wrapper"&gt;
+            &lt;img src="demo_img/full_width/1.png" alt="placeholder+image"&gt;
+            &lt;a href="#"&gt;&lt;span&gt;View project&lt;/span&gt;&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- second item --&gt;
+&lt;div class="portfolio-item full-width text-right"&gt;
+    &lt;div class="left"&gt;
+        &lt;div class="image-wrapper"&gt;
+            &lt;img src="demo_img/full_width/2.png" alt="placeholder+image"&gt;
+            &lt;a href="#"&gt;&lt;span&gt;View project&lt;/span&gt;&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="right text"&gt;
+        &lt;div class="desc"&gt;
+            &lt;h2&gt;title&lt;/h2&gt;
+            &lt;p&gt;description&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre></li>
+</ul>
+
+<h2>6. Included in TRIQ</h2>
+
+<ul>
+<li><a href="http://fortawesome.github.com/Font-Awesome/">Font Awesome</a></li>
+<li><a href="http://www.justbenicestudio.com/studio/websymbols/">WebSymbols Font</a></li>
+<li><a href="http://jquery.com/">jQuery 1.8.2</a></li>
+<li><a href="http://razorjack.net/quicksand/">QuickSand plugin</a></li>
+<li><a href="http://flesler.blogspot.com/2007/10/jqueryscrollto.html">scrollTo</a> and <a href="http://flesler.blogspot.com/2007/10/jquerylocalscroll-10.html">localscroll</a> plugins</li>
+</ul>
+
+<h2>7. Fonts</h2>
+
+<p>TRIQ uses following fonts from <a href="http://www.google.com/webfonts">Google Web Fonts</a> directory:</p>
+
+<ul>
+<li>Lato</li>
+<li>Open Sans Condensed</li>
+<li>PT Sans</li>
+<li>Alegreya (only italic for quotes)</li>
+</ul>
+
+<p>All font styles (font weight, families, sizes and colors) are defined in its own section inside <code>CSS</code> files (search for <code>$FONTS</code>), or in its own file for SASS (<code>sass/include/_font.scss</code>).</p>
+
+</body>
+</html>
+<!-- This document was created with MarkdownPad, the Markdown editor for Windows (http://markdownpad.com) -->

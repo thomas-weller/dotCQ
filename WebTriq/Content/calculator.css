@@ -1,0 +1,269 @@
+table[class*="summary-table"] th, table[class*="summary-table"] td
+{
+    border-top: 0;
+}
+.summary-table
+{
+    border-spacing: 1px 0;
+    border-collapse: separate;
+    border: 0;
+}
+.td-surplus
+{
+    border-left: 2px darkgreen solid;
+    border-right: 2px darkgreen solid;
+    border-color: darkgreen;
+    background-color: #97D997;
+    text-align: right !important;
+}
+.td-surplus-top
+{
+    -webkit-border-top-left-radius: 3px;
+    -webkit-border-top-right-radius: 3px;
+    -moz-border-radius-topleft: 2px;
+    -moz-border-radius-topright: 2px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-top: 2px darkgreen solid !important;
+    border-bottom: 1px darkgreen solid !important;
+    color: darkgreen;
+    background-color: #7FD97F;
+    text-align: center !important;
+}
+.td-surplus-bottom
+{
+    -webkit-border-bottom-right-radius: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    -moz-border-radius-bottomright: 2px;
+    -moz-border-radius-bottomleft: 2px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom: 2px darkgreen solid;
+    text-align: center !important;
+}
+.td-baseline
+{
+    border-left: 2px #4572A7 solid;
+    border-right: 2px #4572A7 solid;
+    border-color: #4572A7;
+    background-color: #C0D2E9;
+    text-align: right !important;
+}
+.td-baseline-top
+{
+    -webkit-border-top-left-radius: 3px;
+    -webkit-border-top-right-radius: 3px;
+    -moz-border-radius-topleft: 2px;
+    -moz-border-radius-topright: 2px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-top: 2px solid #4572A7 !important;
+    border-bottom: 1px solid #4572A7 !important;
+    color: #4572A7;
+    background-color: #B1CAE9;
+    text-align: center !important;
+}
+.td-baseline-bottom
+{
+    -webkit-border-bottom-right-radius: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    -moz-border-radius-bottomright: 2px;
+    -moz-border-radius-bottomleft: 2px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom: 2px #4572A7 solid;
+    text-align: center !important;
+}
+.td-diff
+{
+    border-left: 2px grey solid;
+    border-right: 2px grey solid;
+    border-color: grey;
+    background-color: lightgrey;
+    text-align: right !important;
+}
+.td-diff-top
+{
+    -webkit-border-top-left-radius: 3px;
+    -webkit-border-top-right-radius: 3px;
+    -moz-border-radius-topleft: 2px;
+    -moz-border-radius-topright: 2px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-top: 2px grey solid !important;
+    border-bottom: 1px grey solid !important;
+    background-color: #C0C0C0;
+    text-align: center !important;
+}
+.td-diff-bottom
+{
+    -webkit-border-bottom-right-radius: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    -moz-border-radius-bottomright: 2px;
+    -moz-border-radius-bottomleft: 2px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-bottom: 2px grey solid;
+    text-align: center !important;
+}
+.help-button
+{
+    width: 16px;
+    height: 16px;
+    padding-top: 8px;
+    cursor: pointer;
+}
+select.input-small
+{
+    width: 75px;
+    margin-bottom: 0;
+    font-family: 'Helvetica Neue' , Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: inherit;
+    border-bottom-color: rgb(170, 170, 170);
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-collapse: separate;
+    border-image-outset: 0px;
+    border-image-repeat: stretch;
+    border-image-slice: 100%;
+    border-image-source: none;
+    border-image-width: 1;
+    border-left-color: rgb(170, 170, 170);
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-right-color: rgb(170, 170, 170);
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-top-color: rgb(170, 170, 170);
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-top-style: solid;
+    border-top-width: 1px;
+}
+input.input-mini
+{
+    width: 46px;
+    font-family: 'Helvetica Neue' , Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: inherit;
+}
+
+td.td-label
+{
+    text-align: right;
+    vertical-align: middle;
+    padding-right: 0;
+    padding-bottom: 0;
+    border: none;
+}
+td.td-value
+{
+    width: 76px;
+    border: none;
+}
+td.td-help
+{
+    width: 20px;
+    border: none;
+}
+tspan
+{
+    font-family: 'Helvetica Neue' , Helvetica, Arial, sans-serif !important;
+}
+span.ui-spinner
+{
+    padding-bottom: 2px;
+    margin-top: 1px;
+}
+label.control-label
+{
+    margin-right: 4px;
+}
+input.input-block-level
+{
+    background-color: lightgoldenrodyellow;
+    border: 2px solid #333;
+    color: #333;
+    height: 36px;
+    font-size: 17.5px;
+    font-weight: bold;
+    text-align: right;
+    cursor: text;
+}
+input.input-medium
+{
+    background-color: lightgoldenrodyellow;
+    border: 2px solid #333;
+    color: #333;
+    height: 26px;
+    font-size: 17.5px;
+    font-weight: bold;
+    text-align: right;
+    cursor: text;
+    margin-top: 12px;
+}
+#rowResult input.input-mini
+{
+    background-color: lightgoldenrodyellow;
+    border: 2px solid #333;
+    color: #333;
+    height: 26px;
+    font-size: 17.5px;
+    font-weight: bold;
+    text-align: right;
+    cursor: text;
+    margin-top: 12px;
+}
+input.input-xlarge
+{
+    background-color: lightgoldenrodyellow;
+    border: 3px solid #333;
+    color: #333;
+    height: 36px;
+    font-size: 39px;
+    font-weight: bold;
+    text-align: right;
+    cursor: text;
+    margin-top: 8px;
+    margin-bottom: 2px;
+}
+input.input-reduction
+{
+    background: transparent;
+    border: 0;
+    color: #333;
+    height: 36px;
+    font-size: 39px;
+    font-family: 'Helvetica Neue' , Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    text-align: right;
+    cursor: text;
+    padding-bottom: 0;
+    margin-top: 1px;
+    padding-top: 0;
+}
+#reduction span.ui-spinner
+{
+    background: yellow;
+    border: 3px solid #333;
+    height: 45px;
+    margin-top: 7px;
+}
+#reduction a.ui-spinner-button
+{
+    background: transparent;
+    border-left: 1px solid #333;
+}
+.label
+{
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: normal;
+    width: 55px;
+    padding-left: 6px;
+}

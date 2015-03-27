@@ -1,0 +1,142 @@
+<style>
+    .uvp_item
+    {
+        font-size: 21px !important;
+        font-weight: bold !important;
+        line-height: 24px !important;
+        margin-bottom: 6px !important;
+        color: rgb(80, 80, 80) !important;
+        padding-left: 34px !important;
+        margin-left: 4px !important;
+        background-image: url(../Content/images/arrow-right-24.png);
+        background-repeat: no-repeat;
+        margin-left: 4px !important;
+        background-position: left top;
+    }
+</style>
+<div class="background-light-grey">
+    <div class="container">
+        <div class="row-fluid">
+            <div class="featured" style="padding-top: 14px">
+                <div class="span4">
+                    <img src="~/Content/images/LandingPage/CoderAndBusinessman-v2.png" style="margin-top: 10px"
+                        alt="A software developer thinks in terms of source code, a business analyst in terms of managerial accounting." />
+                </div>
+                <div class="span8">
+                    <div class="excerpt">
+                        <h1 style="line-height: 70px; margin-top: 0; margin-bottom: 26px">
+                            Raise the value of your project's (C#) source code</h1>
+                        @*                        <h1 style="line-height: 70px; margin-top: 0; margin-bottom: 18px">
+                            Control and monitor your C# codebase</h1>
+*@
+                        <p class="uvp_item">
+                            Increase the code quality of your software project - and thus effectively lower
+                            maintenance effort.
+                        </p>
+                        <p class="uvp_item">
+                            Quickly track down the source code spots with the most technical debt (i.e. the
+                            highest risk for causing defects in the future).
+                        </p>
+                        <p class="uvp_item">
+                            Correlate quality metrics with project-specific figures (e.g. bug frequency or project
+                            revenue).
+                        </p>
+                        <p class="uvp_item">
+                            Uncover historical trends that lie within your project - and thereby form a solid
+                            basis for qualified business decisions.
+                        </p>
+                        <p class="uvp_item">
+                            An exhaustive quality report provides valuable insights both for software developers
+                            (code metrics) and project managers (related accounting data).
+                        </p>
+                        <p class="uvp_item">
+                            Easy to use: no implementation hassle, no maintenance expenditures, no up-front
+                            expertise required.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- signup strip -->
+<div class="background-grey strip" style="padding-bottom: 6px; margin-top: 10px">
+    <div class="container lead" style="padding-bottom: 0">
+        .CQ is a cloud-based web service for analyzing C# software source code. It
+        is on the one hand based on well established, scientifically verified methods, and
+        on the other hand makes code quality measuring and monitoring easy-to-use, flexible,
+        and affordable. Furthermore, it provides a way of correlating custom company data
+        with these findings, thus making the service as valuable and useful for accounting
+        as it is to software developers. <a href="/home/concept">Learn more about .CQ, how it
+            can improve your code, supports your managerial accounting, and consequently helps
+            in reducing your project costs.</a><br />
+        <p style="font-size: 21px; font-weight: 200; color: white">
+            -- As of now, .CQ is in a very early development phase. A first version (for C#)
+            will be available around the middle of 2014. --
+        </p>
+    </div>
+</div>
+<!-- testimonials -->
+<div class="container">
+    <div class="row testimonials" style="padding-top: 24px">
+        <div class="span6">
+            <h2>
+                Increase Developer Productivity</h2>
+            <p>
+                Quickly pinpoint problematic source code locations for taking selective action on
+                them and thus systematically and effectively raise the value of your codebase.<br />
+                Correlate your company-specific data with the code's quality measurements to better
+                control business success and to fine-tune your development process.
+            </p>
+            <button class="btn btn-inverse btn-simple btn-wide" onclick="location.href='/Home/Sample'">
+                View the sample report...</button>
+        </div>
+        <div class="span6">
+            <h2>
+                Raise the Project's ROI</h2>
+            <p>
+                Controlling and raising the intrinsic quality of your software project means lowering
+                its maintenance costs (in the long run) as well as lowering the danger of defects
+                (on the short-term side).<br />
+                In sum: It will significantly axe costs, reduce risk, and thus raise ROI.
+            </p>
+            <button class="btn btn-inverse btn-simple btn-wide" onclick="location.href='../calculator/index'">
+                Get an initial approximation with the online calculator...</button>
+        </div>
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+<div class="container">
+    <div class="row">
+        @* ReSharper disable Mvc.PartialViewNotResolved *@
+        @Html.Partial("_newsletterSubscription"); @* ReSharper restore Mvc.PartialViewNotResolved *@
+    </div>
+</div>
+<br />
+<div class="container">
+    <div class="row" style="margin-bottom: 20px">
+        <div class="span4">
+            <br />
+            <h1>
+                Tell us what you think</h1>
+        </div>
+        <div class="span8">
+            <p>
+                .CQ will widely incorporate customer and community feedback to build a product that
+                is really useful to you. So tell us about your problems, about your experiences
+                (good or bad), and about everything else that might seem relevant to you. It's highly
+                appreciated. You can do this in various different ways: By commenting directly on
+                the respective page, by joining the discussion in the message forum, or by doing
+                a quick survey.<br />
+                <div class="controls-row" style="margin-top: 12px">
+                    <button class="btn btn-primary btn-large" onclick="location.href='../home/survey'">
+                        Take the survey...</button>
+                    <button class="btn btn-primary btn-large" style="margin-left: 8px" onclick="location.href='../home/Forums'">
+                        Visit the forum...</button>
+                </div>
+            </p>
+        </div>
+    </div>
+    <!-- /.row -->
+</div>

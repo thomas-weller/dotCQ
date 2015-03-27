@@ -1,0 +1,6 @@
+
+li.disabled > a {
+    pointer-events: none;
+    cursor: default;
+    color: lightgrey !important;
+}

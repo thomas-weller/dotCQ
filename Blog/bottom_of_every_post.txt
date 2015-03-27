@@ -1,0 +1,75 @@
+<script src="/Scripts/jquery-1.9.1.js"></script>
+<script src="/Scripts/sharing.js"></script>
+
+<style>
+    .btn-share
+    {
+        margin-right: 20px;
+        border: 0;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+    }
+.uvp_item {
+	padding-left: 22px !important;
+	margin-left: 2px !important;
+margin-bottom: 2px !important;
+	background-image: url('http://www.dotcq.com/blog/wp-content/uploads/2013/10/arrow-right-24.png');
+	background-repeat: no-repeat;
+	background-position: left;
+	background-size: 16px 16px;
+	background-position-y: 4px;
+}
+</style>
+
+<br/>
+<div>
+<hr style="background-color: black;">
+<h2>About <img src="http://www.dotcq.com/blog/wp-content/uploads/2013/10/logo-text.png" alt="logo-small" style="height: 24px; margin-bottom: -9px;margin-left: 3px" /></h2>
+<p>.CQ is a cloud-based web service for analyzing C# software source code. It will provide easy-to-use code quality analysis along with the ability to correlate custom business figures with the obtained analysis results, thus enabling improved guidance for managing a project. 
+<p><strong>As of now, .CQ is in a very early development phase. A first version (for C#) will be available around the middle of 2014.</strong>
+<p class="uvp_item">A detailed description of the <strong>concepts and considerations</strong> behind .CQ can be found <a href="http://www.dotcq.com/home/concept">here</a>.</p>
+<p class="uvp_item">You can view a <strong>sample analysis report </strong><a href="http://www.dotcq.com/home/sample">here</a>.</p>
+<p class="uvp_item">You may also be interested in the <a href="http://www.dotcq.com/calculator/index"><strong>online calculator</strong></a> to get a rough indication of how much you could save by taking directed actions to raise code quality.</p>
+<p class="uvp_item">Currently, things are very much in flux, and <strong>feedback</strong> is highly appreciated - it will strongly influence the final shape of the product. Various channels are available for this:</p>
+<ul style = "margin-left: 12px;">
+<li>You can leave a comment directly on the page you're currently at. </li>
+<li>You can <a href="http://www.dotcq.com/home#newsletter">subscribe to the .CQ newsletter</a> to stay informed about the latest developments. </li>
+<li>You can take a <a href="http://www.dotcq.com/home/survey">quick survey</a>. </li>
+<li>You can join the discussions in the <a href="https://dotcq.zendesk.com/forums/">message forums</a> (there is also one that lets you request and vote for specific features). </li>
+</ul>
+
+
+
+
+    <div style="margin-bottom: 20px;text-align: right;">
+        <div>
+                <span style = "font-size: 16px;font-weight:bold;margin-right:16px;margin-left:4px;">Spread the word:</span>
+                <button class="btn-share" style="background-image: url('http://www.dotcq.com/blog/wp-content/uploads/2013/10/facebook-icon.jpg')"
+                        title="Share .CQ on Facebook"
+                        onclick="doShare('facebook');" />
+                <button class="btn-share" style="background-image: url('http://www.dotcq.com/blog/wp-content/uploads/2013/10/twitter-icon.jpg')"
+                        title="Tweet .CQ"
+                        onclick="doShare('twitter');" />
+                <button class="btn-share" style="background-image: url('http://www.dotcq.com/blog/wp-content/uploads/2013/10/gplus-icon.jpg'); width: 30px; height: 30px"
+                        title="Share .CQ on Google Plus"
+                        onclick="doShare('gplus');" />
+                <button class="btn-share" style="background-image: url('http://www.dotcq.com/blog/wp-content/uploads/2013/10/linkedin-icon.jpg'); margin-top: 2px"
+                        title="Share .CQ on LinkedIn"
+                        onclick="doShare('linkedin');" />
+                <button class="btn-share" style="background-image: url('http://www.dotcq.com/blog/wp-content/uploads/2013/10/delicious-icon.jpg'); margin-top: 2px"
+                        title="Bookmark .CQ on Delicious"
+                        onclick="doShare('delicious');" />
+        </div>
+        
+        <!-- Sharing components (summaries, images, and the like...) -->
+        <input type="hidden" id="social_summary" value="@Url.Encode(".CQ is a cloud-based service for analyzing C# source code.")">
+        <input type="hidden" id="fb_image" value="@Url.Encode("http://www.w3schools.com/images/colormap_80.gif")">
+        <input type="hidden" id="twitter_text" value="@Url.Encode("www.dotcq.com: .CQ is a cloud-based service for analyzing C# source code.")">
+        <input type="hidden" id="mail_body" value="@Url.Encode("Hi there,\n\nyou may find this link interesting: wwww.dotcq.com\n.CQ is a cloud-based service for analyzing C# source code.")">
+        <input type="hidden" id="mail_subject" value="@Url.Encode("Interesting link: .CQ")">
+    </div>
+<hr style="background-color: black;">
+</div>

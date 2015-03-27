@@ -1,0 +1,100 @@
+﻿<div id="newsletter">
+    <div class="span4">
+        <h1>
+            <br />
+            Stay in touch</h1>
+    </div>
+    <div class="span8">
+        <p>
+            As the .CQ project is in a very early phase, many things are still open and in flux.<br />
+            Subscribe to our newsletter to stay up to date with the latest developments.<br />
+            <div class="controls-row">
+                <form id="subscribenews" onsubmit="return doSubscribe();">
+                <fieldset>
+                    <div id="alert-error" class="alert alert-error" style="display: none">
+                        <button class="close" onclick="$('#alert-error').hide(); return false;">
+                            ×</button>
+                        <span id="error-text"><strong>Invalid email address.</strong><br />
+                            Please enter a valid email address.</span>
+                    </div>
+                    <div id="alert-info" class="alert alert-success" style="display: none">
+                        <button class="close" onclick="$('#alert-info').hide(); return false;">
+                            ×</button>
+                        <span id="info-text"><strong>Your subscription is almost done.</strong><br />
+                            An email with a confirmation link was sent to {0}.</span>
+                    </div>
+                    <div id="alert-info-error" class="alert alert-error" style="display: none">
+                        <button class="close" onclick="$('#alert-info-error').hide(); return false;">
+                            ×</button>
+                        <span id="info-error-text"><strong>Unspecified Error.</strong><br />
+                            We were unable to add this address to our records. Sorry about that.</span>
+                    </div>
+                    <input type="text" id="newsmail" name="newsmail" class="input-xxlarge" style="height: 32px;
+                        font-size: 17.5px; margin-right: 8px; margin-top: 8px; margin-bottom: 6px; border: 1px solid grey;"
+                        placeholder="Your email address..." value="" />
+                    <button class="btn btn-primary btn-large" id="subscribe" name="subscribe">
+                        Subscribe...
+                    </button>
+                    <br />
+                    <small style="margin-left: 4px; font-size: 12px">No spam. Easy one-click unsubscribe.</small>
+                </fieldset>
+                </form>
+            </div>
+        </p>
+    </div>
+</div>
+<script>
+    function doSubscribe() {
+        $('#alert-info').hide();
+        $('#alert-info-error').hide();
+        $('#alert-error').hide();
+        var address = $('#newsmail').val();
+        if (IsEMail(address) == false) {
+            $('#alert-error').show();
+            return false;
+        }
+        $.post('Home/Subscribe', address, function (data) {
+            if (data == 'True') {
+                var txt = $('#info-text');
+                txt.html(txt.html().replace('{0}', address));
+                $('#alert-info').show();
+            } else {
+                $('#alert-info-error').show();
+            }
+        });
+        return false;
+    }
+
+    function IsEMail(str) {
+        var at = "@@";
+        var dot = ".";
+        var lat = str.indexOf(at);
+        var lstr = str.length;
+        var ldot = str.indexOf(dot);
+        if (str.indexOf(at) == -1) {
+            return false;
+        }
+        if (str.indexOf(at) == -1 || str.indexOf(at) == 0 || str.indexOf(at) == lstr) {
+            return false;
+        }
+        if (str.indexOf(dot) == -1 || str.indexOf(dot) == 0 || str.indexOf(dot) == lstr) {
+            return false;
+        }
+        if (str.indexOf(at, (lat + 1)) != -1) {
+            return false;
+        }
+        if (str.substring(lat - 1, lat) == dot || str.substring(lat + 1, lat + 2) == dot) {
+            return false;
+        }
+        if (str.indexOf(dot, (lat + 2)) == -1) {
+            return false;
+        }
+        if (str.indexOf(" ") != -1) {
+            return false;
+        }
+        if (str.substr(ldot + 1).length < 2) {
+            return false;
+        }
+        return true;
+    }
+</script>

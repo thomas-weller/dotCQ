@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+ <semantics>
+  <mrow>
+   <mfrac>
+    <msub>
+     <mi mathvariant="italic">Size</mi>
+     <mrow>
+      <mi mathvariant="italic">phys</mi>
+     </mrow>
+    </msub>
+    <mn>55</mn>
+   </mfrac>
+  </mrow>
+  <annotation encoding="StarMath 5.0">Size_{phys} over 55</annotation>
+ </semantics>
+</math>

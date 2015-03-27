@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+ <semantics>
+  <mrow>
+   <mfrac>
+    <mrow>
+     <msub>
+      <mi mathvariant="italic">ize</mi>
+      <mrow>
+       <mi mathvariant="italic">fun</mi>
+      </mrow>
+     </msub>
+     <mrow>
+      <mi/>
+      <mo stretchy="false">/</mo>
+      <mi/>
+     </mrow>
+     <mrow>
+      <mn>10.67</mn>
+     </mrow>
+    </mrow>
+    <mn>12</mn>
+   </mfrac>
+  </mrow>
+  <annotation encoding="StarMath 5.0">{Size_{func} `/` {10.67}} over 12
+</annotation>
+ </semantics>
+</math>

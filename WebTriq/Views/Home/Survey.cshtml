@@ -1,0 +1,30 @@
+﻿<div class="page-header background-grey strip">
+    <div class="container">
+        <h1>
+            Survey</h1>
+    </div>
+</div>
+<div class="container">
+    <p>
+        This quick survey is intended to collect some general data about the people that
+        are interested in .CQ and about the environment they're working in. These data will
+        influence the direction of the further development and design of .CQ.
+    </p>
+    <hr style="border: 1px solid #333" />
+</div>
+<div id="wait" class="container">
+    <div class="row span2 offset5" style="margin-top: 200px; margin-bottom: 400px">
+        <img src="~/Content/images/waitSpinner.gif" style="horiz-align: center" />
+        <p class="lead" style="horiz-align: center; margin-top: 20px; margin-left: 12px">
+            Loading...</p>
+    </div>
+</div>
+<div id="survey" class="container" style="margin-top: 10px; display:none; padding-left:250px">
+    <script src="https://www.surveymonkey.com/jsEmbed.aspx?sm=HYn_2fmdh_2f2vEAdoF2pHO1ig_3d_3d"> </script>
+</div>
+<script type="text/javascript">
+    window.onload = function () {
+        $('#wait').hide();
+        $('#survey').show();
+    };
+</script>

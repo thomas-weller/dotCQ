@@ -1,0 +1,20 @@
+﻿.bn-forum-topnav .bn-forum-action-search input, .bn-forum-topnav .bn-forum-action-search select
+{
+    border-color: #333;
+}
+.bn-forum-category.bn-forum-threads, #bn-forum-thread-parents, #bn-forum-threads-post, .bn-forum-post-form
+{
+    background-image: url(http://assets.bravenet.com/bnlib/backgrounds/tbg_gradient.png);
+    background-position: top left;
+    background-repeat: repeat-x;
+    border-width: 5px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+label {
+  font-size: 24px !important;
+  font-weight: bold !important;
+  color:black !important;
+}

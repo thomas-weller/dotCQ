@@ -1,0 +1,106 @@
+﻿@using System.Web.Optimization
+@using NavigationRoutes
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#"
+xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+    <title>@ViewBag.Title</title>
+    @if (ViewBag.MetaDescription != null && !string.IsNullOrEmpty(ViewBag.MetaDescription))
+    {
+        <meta name="description" content="@ViewBag.MetaDescription">
+    }
+    <meta charset="utf-8">
+    <!-- FavIcon -->
+    <link rel="shortcut icon" href="~/Content/images/favicon.ico">
+    <!-- Styles -->
+    <link rel="stylesheet" href="~/Content/triq/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/triq/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="~/Content/triq/css/font-awesome.css">
+    <link rel="stylesheet" href="~/Content/triq/css/triq.css">
+    <link rel="stylesheet" href="~/Content/triq/css/triq-responsive.css">
+    <link rel="stylesheet" href="~/Content/layout.css">
+    <style>
+        [class^="icon-"]
+        {
+            background: url("../../Content/images/glyphicons-halflings.png");
+        }
+        body
+        {
+            padding-top: 130px;
+            min-width: 1000px;
+        }
+        .page-header
+        {
+            margin-top: -12px;
+        }
+    </style>
+    @RenderSection("head", required: false)
+    @Html.Partial("_html5shiv")
+</head>
+<body>
+    @Html.Partial("_beforeNavBar")
+    <!-- NavBar -->
+    <div id="navbar" class="navbar navbar-fixed-top" style="border-bottom: 2px solid #333">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="/home">
+                    <img id="logo-bottom" src="~/Content/images/logo-bottom.png" alt="logo" style="margin-top: -19px;
+                        margin-left: 20px; height: 50px">
+                </a><a class="brand" href="/home">
+                    <img id="logo-small" src="~/Content/images/logo-small.png" alt="logo" style="margin-top: -8px;
+                        height: 46px; display: none">
+                </a>
+                <ul class="nav pull-right">
+                    @Html.Navigation()
+                </ul>
+            </div>
+        </div>
+    </div>
+    @RenderBody()
+    @Html.Partial("_disclaimer")
+    <!-- Footer -->
+    <footer>
+        <div class="background-white footer container-fluid" style="margin-top: 20px; border-top: 2px solid #333">
+            <p class="pull-left"><a href="/home/legal">&copy; 2013 dotCQ Software Development</a></p>
+        </div>
+    </footer>
+    @Scripts.Render("~/js")
+    @RenderSection("Scripts", required: false)
+    <script src="~/scripts/jquery.ba-throttle-debounce.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            logo();
+            note();
+        });
+        $(window).resize(function() {
+            logo();
+        });
+        $(window).scroll($.debounce(250, function() {
+            logo();
+        }));
+
+        function logo() {
+            if ($('#before-navbar').position().top > 0) {
+                $('#logo-top').hide();
+                $('#logo-bottom').hide();
+                $('#logo-small').hide();
+            } else if ($('#navbar').position().top <= 0) {
+                $('#logo-top').hide();
+                $('#logo-bottom').hide();
+                $('#logo-small').show();
+            } else {
+                $('#logo-small').hide();
+                $('#logo-top').show();
+                $('#logo-bottom').show();
+            }
+        }
+
+        function note() {
+            if (isDisclaimerCookieSet() === false) {
+                showDisclaimerDlg();
+                setDisclaimerCookie();
+            }
+        }
+    </script>
+</body>
+</html>

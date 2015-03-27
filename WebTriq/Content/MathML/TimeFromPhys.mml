@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+ <semantics>
+  <mrow>
+   <mfrac>
+    <mrow>
+     <mrow>
+      <mo stretchy="false">(</mo>
+      <mrow>
+       <mrow>
+        <mn>1</mn>
+        <mo stretchy="false">/</mo>
+        <mn>590</mn>
+       </mrow>
+      </mrow>
+      <mo stretchy="false">)</mo>
+     </mrow>
+     <mrow>
+      <mi/>
+      <mo stretchy="false">×</mo>
+      <mi/>
+     </mrow>
+     <msub>
+      <mi mathvariant="italic">Size</mi>
+      <mrow>
+       <mi mathvariant="italic">phys</mi>
+      </mrow>
+     </msub>
+    </mrow>
+    <mn>12</mn>
+   </mfrac>
+  </mrow>
+  <annotation encoding="StarMath 5.0">{(1 / 590) `times` Size_{phys}} over 12
+</annotation>
+ </semantics>
+</math>

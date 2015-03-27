@@ -1,0 +1,822 @@
+﻿<style>
+    .toc
+    {
+        float: right;
+        background: lightgrey;
+        padding: 1em 2em;
+        margin: 0 0 0.5em 0.5em;
+    }
+    .target
+    {
+        position: absolute;
+        top: -70px;
+    }
+    h3, h4, h5
+    {
+        position: relative;
+    }
+</style>
+<div class="page-header background-grey strip">
+    <div class="container">
+        <h1>
+            The Motivations and Concepts Behind .CQ</h1>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="span6">
+            <br/>
+            <p>
+                This page outlines the practical and theoretical considerations behind .CQ, providing
+                you with further details about the ways in which it can improve software maintainability
+                in practice. Here you can learn more about .CQ, what the service is designed to
+                do, and about some of the practical problems that it is aimed at.
+            </p>
+            <p>
+                The first part (<a href="#General">General and Introductory Considerations</a>)
+                gives a broad overview over the topic of software maintenance in general, over the
+                most common approaches to handle this issue, and some of their shortcomings.
+            </p>
+            <p>
+                Chapter 2 (<a href="#Practice">Maintainability in Practice</a>) looks at some typical
+                challenges that companies are faced with when dealing with software quality issues
+                in a practical context, at the most common ways to address them, and at some problems
+                that regularly occur along the way. As a result, some conclusions are drawn from
+                these observations and the most urgent requirements are listed that an alternative
+                solution would have to fulfill.
+            </p>
+            <p>
+                Finally, the third section (<a href="#Introducing">Introducing .CQ</a>) then presents
+                and describes the .CQ web service, which is designed from ground up to address these issues.
+            </p>
+            <p>
+                If you'd like to comment on one or more of the points made below or have your own
+                experience to add, please feel free to do so on <a href="#disqus_thread">this page's
+                                                                    comment section</a>. You may also discuss specific aspects with other people
+                in one of the <a href="https://dotcq.zendesk.com/forums/">forums</a>.
+            </p>
+            <p>
+                If you'd prefer to quickly learn about a particular element of .CQ, or
+                have a specific question in mind, you may also try the <a href="~/home/faq">
+                                                                           FAQ page</a>. To get an overall impression of what .CQ is and what it does,
+                please take a look at the <a href="~/home/sample">sample report</a>.
+            </p>
+            <p>
+                <small>(<b>Disclaimer</b>: Numbers and percentages in this text are deliberately left
+                    without direct citations, since the concrete numbers presented in research literature
+                    on software development vary widely, due to different concepts and methods. Therefore,
+                    the numbers are based on both an overall impression of the consulted research literature
+                    and on practical field experience.)</small>
+            </p>
+            <br />
+        </div>
+        <div class="span5 offset1 toc">
+            <h4>
+                On this page:</h4>
+            <ul id="toc">
+                <li><a href="#General">General and Introductory Considerations</a>
+                    <ul>
+                        <li><a href="#TwoPhases">The two major phases in the lifecycle of a software project</a></li>
+                        <li><a href="#MaintainabilityConcept">The Concept of Software Maintainability</a></li>
+                        <li><a href="#Approaches">Common Approaches and Their Shortages</a>
+                            <ul>
+                                <li><a href="#ISO9126">ISO/IEC 9126</a></li>
+                                <li><a href="#Debt">Technical Debt</a></li>
+                                <li><a href="#MI">Maintainability Index</a></li>
+                                <li><a href="#COSQ">Cost of Quality</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="#Practice">Maintainability in Practice</a>
+                    <ul>
+                        <li><a href="#FailureRates">High failure rates in software projects</a></li>
+                        <li><a href="#BusinessValue">Assessing (and monitoring) the business value of software</a></li>
+                        <li><a href="#Readability">The special importance of readability and understandability</a></li>
+                        <li><a href="#Strategies">Common industrial strategies</a>
+                            <ul>
+                                <li><a href="#Tools">Tools</a></li>
+                                <li><a href="#Consultants">Consultants</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#Conclusion">Conclusion</a></li>
+                    </ul>
+                </li>
+                <li><a href="#Introducing">Introducing .CQ</a>
+                    <ul>
+                        <li><a href="#Metrics">Source code metrics</a>
+                            <ul>
+                                <li><a href="#Volume">System Volume</a></li>
+                                <li><a href="#Complexity">Method Complexity</a></li>
+                                <li><a href="#Duplication">Duplication</a></li>
+                                <li><a href="#Size">Method Size</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#Aggregation">Aggregation of Metrics and Mapping to Categories</a></li>
+                        <li><a href="#Trending">Historical Trending</a></li>
+                        <li><a href="#Correlation">Correlation with Custom Figures</a></li>
+                        <li><a href="#Report">Useful Report</a></li>
+                        <li><a href="#Architecture">API - Client Architecture</a></li>
+                    </ul>
+                </li>
+                <li><a href="#Reading">Further reading</a></li>
+            </ul>
+        </div>
+    </div>
+    <hr style="border: 1px solid #333" />
+    <div>
+        <h3>
+            <span class="target" id="General"></span>General and Introductory Considerations</h3>
+        <h4>
+            <span class="target" id="TwoPhases"></span>The two major phases in the lifecycle
+            of a software project</h4>
+        <p>
+            On its most basic level, the software development process can be divided into two
+            major phases:
+        </p>
+        <ol>
+            <li>Pre-release: This phase involves planning, designing, programming, and deploying
+                the software. It is quite resource intensive in terms of costs, time and man hours
+                and often has to take some kind of deadline and/or <a href="http://en.wikipedia.org/wiki/Time-to-market">
+                    Time to market</a> requirements into account. However, relative to the overall
+                lifetime of the project, the pre-release phase of a software project spans a rather
+                short period of time (usually something between six months and two years) and accounts
+                for no more than about 20-40% of overall project costs (with 1/4 of overall costs
+                being a suitable estimation).</li>
+            <li>Post-release: This phase is commonly known as the maintenance phase of a software
+                product. It includes all activities that occur after the initial release of the
+                software, including bug fixing, feature enhancements, performance optimizations,
+                environmental adaptations, and so on. Or, more generally, it encompasses all activities
+                that are necessary to either prevent the software from becoming obsolete ahead of
+                its intended lifetime, or to enhance its usefulness for the user. This phase spans
+                the lion's share of all activities related to the project, both in terms of effort
+                (60-80%, mostly around 10-20 years, with outliers up to 30 years) and costs (ca.
+                50-90%, typically around 3/4).</li>
+        </ol>
+        <p>
+            As you can may conclude from the above information, if software maintenance constitutes
+            such a big proportion of a software project's budget, then any improvement that
+            makes maintenance activities easier to accomplish will have a significantly positive
+            impact on the project's overall costs and lifetime; Or, in other words: Improvements
+            on the maintainability of a software system will considerably and disproportionately
+            raise the project's <a href="http://en.wikipedia.org/wiki/Return_on_investment">Return
+                on investment</a>.
+        </p>
+        <h4>
+            <span class="target" id="MaintainabilityConcept"></span>The Concept of Software
+            Maintainability</h4>
+        <p>
+            One common perception pertaining to software maintenance is that it merely involves
+            fixing defects. However, in reality, such activities only account for approximately
+            20% of the total maintenance effort, with most of the overall &ldquo;maintenance&ldquo;
+            (around 80%) actually contributing toward non-corrective actions. A common categorization
+            of maintenance activities divides them into the following four classes:
+        </p>
+        <ul>
+            <li>Corrective: Also known as defect-repair or simply bug-fixing. More generally, this
+                activity includes all kinds of reactive modifications that are performed after delivery
+                of the software product with the purpose of correcting discovered problems.</li>
+            <li>Adaptive: Modification of the software product with the aim of keeping it functional
+                and practical in a changed or changing environment. Modifications of this kind may
+                be essential e.g. in reaction to new hardware platforms, software versions, or legal/regulatory
+                requirements.</li>
+            <li>Perfective: Modification of the software product to improve its performance or maintainability
+                (without changing its functionality). Refactoring and similar activities fall into
+                this category.</li>
+            <li>Preventive: Modification of the software product to detect and correct latent faults
+                before they become effective faults.</li>
+        </ul>
+        <h4>
+            <span class="target" id="Approaches"></span>Common Approaches to Software Quality
+            (and Their Shortages)</h4>
+        <h5>
+            <span class="target" id="ISO9126"></span><em>ISO/IEC 9126</em></h5>
+        <p>
+            A well known and widely accepted concept for categorizing software maintainability
+            is the <a href="http://en.wikipedia.org/wiki/ISO/IEC_9126">ISO/IEC 9126 Software engineering
+                — Product quality</a> standard, which mentions maintainability as one of the
+            six main characteristics of software product quality, along with analyzability,
+            changeability, stability, and testability as its sub characteristics. However, for
+            practitioners, the standard is of very limited use. It may provide a useful conceptual
+            framework for discussing software maintainability, but it does not promote any concrete
+            conclusions. In particular, it gives no clue whatsoever as to how the above sub
+            characteristics may be correlated with observable and quantifiable code properties.
+            Moreover, since ISO/IEC 9126 is based solely on the observation of post-release
+            activities, it does not embody, or even imply, any element of predictability.
+        </p>
+        <h5>
+            <span class="target" id="Debt"></span><em>Technical Debt</em></h5>
+        <p>
+            Turning things around, seeing them more from a developer's view, is at the heart
+            of identifying <a href="http://en.wikipedia.org/wiki/Technical_debt">Technical Debt</a>
+            that resides within a certain area of source code. What this basically means, is
+            that there is a critical deficiency in the code properties that are known to impact
+            maintainability, raising the likelihood of future problems. A piece of code with
+            a high technical debt is often referred to as having a <a href="http://en.wikipedia.org/wiki/Code_smell">
+                Code smell</a>.
+        </p>
+        <h5>
+            <span class="target" id="MI"></span><em>Maintainability Index</em></h5>
+        <p>
+            Whereas the ISO/IEC 9126 standard is aimed more at conceptual aspects, the <a href="http://www.projectcodemeter.com/cost_estimation/help/GL_maintainability.htm">
+                Maintainability Index (MI)</a> represents a prominent attempt to measure and
+            quantify the maintainability of a source code body (various concrete implementations
+            exist). On first sight, MI may be more practicable, since it calculates a concrete,
+            single number. However, this number is the result of a pretty complicated aggregation
+            of various different source code metrics, which are factored by some preset numbers.
+            These, in turn, are derived from large data collections on software projects and/or
+            expert opinions. Consequently, the formulas are very hard to understand and explain
+            and they appear to contain an element of arbitrariness. Furthermore, since the MI
+            represents a composite number, it tells you nothing about the concrete cause of
+            a specific value. It is not immediately clear what change in a system causes a change
+            in the MI metric, and therefore it is also not clear what steps can be taken to
+            rectify any problems. In other words: The MI does not provide a mechanism for root-cause
+            analysis. Its outcomes are not directly actionable without further interpretation,
+            which would require additional expertise in code quality analysis or at least a
+            considerable amount of professional experience in the field of software development.
+        </p>
+        <h5>
+            <span class="target" id="COSQ"></span><em>Cost of Quality</em></h5>
+        <p>
+            On the business side, the <a href="http://blog.lnsresearch.com/blog/bid/124741/Cost-of-Quality-Definition">
+                Cost of (Software) Quality Approach</a> (CoSQ) is commonly used for quantifying
+            the expenses and savings related to software maintenance. While sometimes misinterpreted
+            as being solely focused on reducing costs, CoSQ rather is an accounting technique
+            that looks at the entirety of cost factors involved in delivering good-quality software.
+            Various concrete definitions and measurement methods exist, but the general idea
+            is always: The total costs of quality of a software system are made up of investments
+            in <i>good quality</i> (i.e. any kind of quality improvement activities, mostly
+            during the pre-release phase), plus the costs incurred as a consequence of <i>poor quality</i>
+            (caused by defect repairs, remediations, and related costs that occur in the post-release
+            phase). And - again, regardless of definitions and measurement methods - the overall
+            result is always: Improving the <i>good quality</i> of a software product results
+            in a greatly disproportionate decline on the <i>poor quality</i> side of the CoSQ
+            equation. In other words: The Return on Investment for software process improvements
+            is extraordinarily high. It usually lies between 4 and 10, with an average around
+            7 (meaning that every invested dollar brings 7 dollars’ profit)<sup>*</sup>. You
+            may have heard the saying that software quality comes for free. Well, this is not
+            correct. In fact, software quality pays. Massively. But while, at least in theory,
+            this fact is very well known and confirmed again and again, little happens on the
+            practical side of things. This is mostly due to the fact that, as of now, concrete
+            implementations of software quality improvements and related controlling mechanisms
+            are very complex undertakings, and they often require huge up-front investments.
+            This places a big hurdle on a more widespread adoption of systematic software quality
+            control mechanisms - especially for smaller companies.
+        </p>
+        <hr style="border: 1px solid lightgrey; width: 300px" />
+        <p>
+            <small>* <small>You may notice that our <a href="~/calculator/index">Cost Calculator</a>
+                yields results that are mostly lower than these figures. This is largely due to
+                two facts:<br />
+                1. Whereas the here described CoSQ approach looks at all aspects of a software project
+                - including all kind of organizational and management aspects -, .CQ focuses exclusively
+                on code quality at source code level and does not deal with other optimization potentials.
+                They might be huge, but they are not elusive for automation.<br />
+                2. The Calculator results are strictly on the conservative side of things (and therefore
+                they are best interpreted as a kind of 'at-least' scenario).</small></small>
+        </p>
+        <br />
+        <h3>
+            <span class="target" id="Practice"></span>Maintainability in Practice</h3>
+        <h4>
+            <span class="target" id="FailureRates"></span>High failure rates in software projects</h4>
+        <p>
+            Software development projects have a very poor industrial record<sup>*</sup>: most
+            of them fall short of their initial objectives for one reason or the other. A good
+            portion of them (about 5-15%) will be completely abandoned, while the majority of
+            the rest will come in over schedule and/or over budget, mostly to a considerable
+            extent. In reality, very few IT projects truly succeed—only about 1/4. The top reasons
+            for this dramatically high failure rate are commonly related to poor management
+            and planning; however, poor code quality also has a substantial share...
+        </p>
+        <p>
+            <small>* <small>While concrete figures vary largely between individual studies and occasionally
+                are subject to heated debates (such as those presented in the infamous Standish
+                CHAOS report), it remains true in all cases that performance in this area is generally
+                somewhere between <i>very poor</i> and <i>catastrophic</i>.</small></small>
+        </p>
+        <h4>
+            <span class="target" id="BusinessValue"></span>Assessing (and monitoring) the business
+            value of a software system</h4>
+        <p>
+            It's always difficult to assess the value of a software system. This is mainly due
+            to the fact that software is an intangible product and, as such, its value cannot
+            be observed in a straightforward manner. In current practice, the overall business
+            value of a software system tends to be overrated because its future maintenance
+            costs are mostly undervalued. As the maintenance costs of a software system are,
+            to a large extent, determined by the quality of its source code, a more appropriate
+            assessment method must study this area in more detail. For this purpose, better
+            tools and methods are needed to analyze a body of code and subsequently devise quantifiable
+            and comparable results.
+        </p>
+        <p>
+            Additionally, the difficulties associated with assessing a software project's value
+            (presumably on a regular basis), lead to a related, but distinct problem: The lack
+            of availability of hard data makes controlling the strategic and financial elements
+            of the project largely a matter of gut feeling (or of professional experience, if
+            that’s how you would prefer to describe it).
+        </p>
+        <h4>
+            <span class="target" id="Readability"></span>The special importance of readability
+            and understandability</h4>
+        <p>
+            Readability and understandability appear to be very trivial and, as such, their
+            importance is significantly undervalued. It is well known that code reading and
+            understanding consumes about half of the overall maintenance efforts. Consequently
+            - taking the above figures into account - code reading and understanding accounts
+            for about 25-45% of the overall project costs. While software readability is an
+            issue in itself and partly goes beyond the code properties discussed here, the code
+            metrics defined below are at the very heart of readability and have been proven
+            to have a big impact on readability.
+        </p>
+        <h4>
+            <span class="target" id="Strategies"></span>Common industrial Strategies</h4>
+        <p>
+            In current industrial practice, there are basically two different ways in which
+            a company can tackle software quality issues: Through the usage of suitable tools
+            or by hiring the services of external consultants.
+        </p>
+        <h5>
+            <span class="target" id="Tools"></span><em>Tools</em></h5>
+        <p>
+            There are a lot of tools available that are related to software quality issues:
+            open source, free and commercial (e.g. <a href="http://stylecop.codeplex.com/">StyleCop</a>,
+            <a href="http://msdn.microsoft.com/en-us/library/bb429476(VS.80).aspx">FxCop</a>,
+            or <a href="http://www.ndepend.com/">NDepend</a> in the .NET space, to name just
+            some of the more popular offerings). But their adoption in an industrial-grade context
+            faces some serious issues that greatly limit their practical usefulness: It's not
+            easy to integrate them with a companies' toolchain and to align them with the developer's
+            familiar workflows. Additionally, the reports that they output are exclusively directed
+            towards “nerdy” software developers, more often than not require very specialized
+            expertise about code quality issues and generally present an incomprehensible pile
+            of details about the inspected code while at the same time lacking a reader-friendly
+            summary.
+        </p>
+        <h5>
+            <em><span class="target" id="Consultants"></span>Consultants</em></h5>
+        <p>
+            An alternative approach is to hire an external consultant who has the required expertise
+            to provide product advice on methods of improving a software system's code quality.
+            However, the availability of such experts is very limited. Furthermore, because
+            these experts usually charge high rates, hiring the right person can constitute
+            a costly initiative. Moreover, these types of consultants don’t naturally contribute
+            toward the establishment of the required in-house expertise within a company.
+        </p>
+        <p>
+            Both approaches—tool adoption and the assignment of external consultants—come with
+            substantial downsides that effectively prevent their large-scale adoption in the
+            industry. They both require massive up-front investments (both in terms of money
+            and effort) and their effects can only be observed in practice after a considerable
+            period of time (if at all). There is a distinct possibility that an investment in
+            this area will never actually pay off in the final settlement - especially if their
+            initial assumptions were not chosen carefully (which sometimes is very close to
+            impossible...) or there were significant changes to the project (which is the case
+            all too often...). There's not much room for trial and error and/or flexibility
+            here. Consequently, most people who are in charge of a software project's budget
+            will not even consider taking such a high business risk.
+        </p>
+        <h4>
+            <span class="target" id="Conclusion"></span>Conclusion</h4>
+        <p>
+            The previous sections described some of the major practical problems that can arise
+            when a company or a development team attempt to resolve software maintainability
+            or code quality issues.
+        </p>
+        <p>
+            Below you will find a list of the main principles and properties that a suitable
+            and user-oriented solution will need to demonstrate in order to respond to these
+            problems. Namely, such a solution should...
+        </p>
+        <ul>
+            <li>... be easy to use and practical, without demanding elaborate action and/or special
+                expertise on the user side.</li>
+            <li>... operate on easy-to-understand principles that do not require any sort of expert
+                know-how.</li>
+            <li>... present analysis and results in a clear way that is useful for both software
+                developers and business analysts.</li>
+            <li>... provide business analysts with flexible control. In other words: the solution
+                should make it easy to relate project-specific figures to analysis results, and
+                should include historical and trending information about the project.</li>
+            <li>... provide clear root-cause analysis for the developers. In other words: the solution
+                should allow members of the development team to take immediate and concrete actions
+                on the source code.</li>
+            <li>... be flexible enough (from a technical point of view) to be adapted to and integrated
+                with different developer tools and workflows.</li>
+            <li>... have an affordable and flexible pricing scheme that entails that the solution
+                can be deployed both on a regular and an as-needed basis.</li>
+        </ul>
+        <br />
+        <h3>
+            <span class="target" id="Introducing"></span>Introducing .CQ [dɒtsiːkjuː]</h3>
+        <p>
+            The above considerations led to the conceptual design of a solution named .CQ. .CQ is a
+            cloud-based web service that analyzes a software project's source
+            code and presents the results of this analysis in a suitable report document. The
+            following sections briefly outline the principles that .CQ is built upon, and how this
+            addresses the mentioned issues.
+        </p>
+        <h4>
+            <span class="target" id="Metrics"></span>Source code metrics</h4>
+        <p>
+            An analysis of the maintainability of a software project first and foremost has
+            to quantitatively measure the most relevant properties of the source code under
+            question. These measurements are commonly known as <a href="http://en.wikipedia.org/wiki/Software_metric">
+                software metrics</a>. A small but significant set of these metrics is used to
+            analyze the project's source code; each of the chosen metrics has a well-established
+            record of scientific verification and corresponding expert judgments. Namely, these
+            metrics are:
+        </p>
+        <h5>
+            <span class="target" id="Volume"></span><em>System Volume</em></h5>
+        <p>
+            Though not allowing for direct root-cause analysis, it is fairly intuitive that
+            the total size of a software system has a big impact on its overall maintainability.
+            The larger a system is, the more effort it takes to maintain it, since there is
+            more information to be taken into account. System volume is measured in <a href="http://en.wikipedia.org/wiki/Source_lines_of_code">
+                Source lines of code</a> (SLOC).
+        </p>
+        <h5>
+            <span class="target" id="Complexity"></span><em>Method Complexity</em></h5>
+        <p>
+            The complexity of source code refers to its internal intricacy and can be measured
+            using the <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity">McCabe Cyclomatic
+                Complexity</a> metric, which counts the number of possible decisions that can
+            be taken in a procedure. The complexity of a unit negatively impacts its analyzability
+            and testability—more complex units are more difficult to understand and analyze,
+            more difficult to test, and they tend to contain more defects. Therefore, it is
+            advisable to make every effort to keep a method's complexity low.
+        </p>
+        <h5>
+            <span class="target" id="Duplication"></span><em>Duplication</em></h5>
+        <p>
+            <a href="http://en.wikipedia.org/wiki/Duplicate_code">Duplicate code</a> is another
+            code smell that is well known to have a substantially negative impact on a software
+            system's maintainability. Although the occurrence of a small amount of duplication
+            is natural and unavoidable in complex systems, excessive amounts of duplication
+            are detrimental to its maintainability. Sequences of duplicate code are also referred
+            to as <em>code clones</em> (or simply <em>clones</em>).
+        </p>
+        <h5>
+            <span class="target" id="Size"></span><em>Method Size</em></h5>
+        <p>
+            Large methods are hard to read and understand and also tend to cause more issues
+            than smaller ones. As such, it is commonly accepted among developers that methods
+            should be kept small and focused. Just like overall system volume, method size is
+            expressed in <a href="http://en.wikipedia.org/wiki/Source_lines_of_code">Source lines
+                of code</a> (SLOC).
+        </p>
+        <h4>
+            <span class="target" id="Aggregation"></span>Aggregation of Individual Metrics and
+            Mapping to Maintainability Categories</h4>
+        <p>
+            Each of the above individual metrics can be challenged, do not provide hard enough
+            data when viewed in isolation, and may, in some cases, yield false positives. For
+            this reason, the individual metrics on the methods are combined to a summarized
+            rating that produces more authoritative results. Additionally, the observed metrics
+            are mapped to maintainability characteristics as defined by the ISO/IEC 9126 standard
+            (described above). The methodology employed is based on a modification of the software
+            quality assessment model known as the <a href="http://www.sig.eu/en/Research/690/__Maintainability_Model__.html">
+                SIG maintainability model</a>.
+        </p>
+        <h4>
+            <span class="target" id="Trending"></span>Historical Trending</h4>
+        <p>
+            .CQ is intended to be repeatedly applied. This can either be on a regular basis
+            during the development phase of a software project (maybe as part of a <a href="http://en.wikipedia.org/wiki/Continuous_integration">
+                Continuous Integration</a> process) or on a per-case basis for existing source
+            code bodies (e.g. for legacy or outsourced projects). This way, a data inventory
+            for the project can be compiled that offers deeper insights into the historical
+            trends of the analyzed system. This is especially important because synchronous
+            analysis results can vary greatly between projects, meaning that their significance
+            and comparability are limited. On the other hand, historical data that only relates
+            to previous data from the same project has much greater explanatory power.
+        </p>
+        <h4>
+            <span class="target" id="Correlation"></span>Correlation with Custom Figures</h4>
+        <p>
+            To really control business processes and to assess specific actions, it is important
+            that it is possible to relate the analysis figures to more business and project-specific
+            data—be it bug frequency, sales figures, or any other data type that is meaningful
+            in a certain scenario. To make this possible, the user can define custom data series
+            and enter the respective figures. The .CQ service then computes the statistical
+            correlation between the user-defined data and the system's maintainability rating,
+            using <a href="http://en.wikipedia.org/wiki/Spearman's_rank_correlation_coefficient">
+                Spearman's rank correlation coefficient</a>.
+        </p>
+        <h4>
+            <span class="target" id="Report"></span>Useful Report</h4>
+        <p>
+            The results of the analysis are relevant to two different groups of people, performing
+            different actions, and looking at different figures:
+        </p>
+        <ul>
+            <li>Software developers who are working directly with the code of the software system.</li>
+            <li>Business-oriented people who are concerned with strategic and controlling issues
+                and are in charge of the project's budget.</li>
+        </ul>
+        <p>
+            An analysis report that strives to be useful to both groups must provide detailed
+            information about the source code to allow for direct action while also presenting
+            the data in a more summarized form that is useful for business. (See <a href="~/home/sample">here</a> for an
+            example report.)
+        </p>
+        <h4>
+            <span class="target" id="Architecture"></span>API - Client Architecture</h4>
+        <p>
+            .CQ's architectural approach is that of a (<a href="http://en.wikipedia.org/wiki/Representational_state_transfer#RESTful_web_APIs">RESTful</a>)
+            web API. This design brings a great amount of flexibility, making it possible to
+            build any sort of client application on top of the service (e.g. command-line clients
+            or IDE-plugins).
+        </p>
+    </div>
+    <br />
+    <hr style="border: 1px solid #333" />
+    <h3>
+        <span class="target" id="Reading"></span>Further reading</h3>
+    <p>
+        <small>The following is a compilation of sources that influenced the design of the .CQ
+            concept. It includes blogs, whitepapers, research studies and books. Where freely
+            available, these links point to the respective sources. Other links point to Amazon
+            (books) or the respective locations where the research publications are available.</small>
+    </p>
+    <div style="margin-left: 20px">
+        <p>
+            <small>Abran, A. (ed), Moore, J.W. (ed), Bourque, P. (ed), Dupuis, R. (ed) . 2005. <a
+                href="http://www.computer.org/portal/web/swebok/html/ch6">Guide to the Software
+                Engineering Body of Knowledge (SWEBOK), Chapter 6: Software Maintenance</a>. IEEE
+                Computer Society. </small>
+        </p>
+        <p>
+            <small>Agarwal, R. 2005. <a href="http://www.irahul.com/2005/10/software-development-vs-software.html">
+                Software Development vs Software Maintenance</a>. </small>
+        </p>
+        <p>
+            <small>Aggarwal, K.K, Singh, Y., Chhabra, J.K. 2002. <a href="http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=981648&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D981648">
+                An integrated measure of software maintainability</a>. Annual Reliability and Maintainability
+                Conference.. </small>
+        </p>
+        <p>
+            <small>Anil kumar, G., Reddy, CRK., Govardhan, A. 2013. <a href="http://warse.org/pdfs/2013/icacsesp114.pdf">
+                Influences of code cloning in software maintenance cost</a>. In: International Journal
+                of Advanced Trends in Computer Science and Engineering, Vol.2 , No.1, pp. 640-643.
+            </small>
+        </p>
+        <p>
+            <small>Atwood, J., 2006. <a href="http://www.codinghorror.com/blog/2006/05/the-long-dismal-history-of-software-project-failure.html">
+                The Long, Dismal History of Software Project Failure</a>. Coding Horror. </small>
+        </p>
+        <p>
+            <small>Atwood, J., 2004. <a href="http://www.codinghorror.com/blog/2004/11/the-cost-of-complexity.html">
+                The Cost of Complexity</a>. Coding Horror. </small>
+        </p>
+        <p>
+            <small>Banker, R.D., Datar, S.M., Kemerer, C.F., Zweig, D. 1993. <a href="http://www.pitt.edu/~ckemerer/CK%20research%20papers/SwComplexityAndMaintenanceCost_BankerDatar93.pdf">
+                Software Complexity and Maintenance Costs</a>. In: Communications of the ACM, Vol.
+                36, Issue 11, pp. 81-94. </small>
+        </p>
+        <p>
+            <small>Bird, J. 2013. <a href="http://swreflections.blogspot.de/2013/01/classic-mistakes-in-software.html">
+                Classic Mistakes in Software Development and Maintenance</a>. </small>
+        </p>
+        <p>
+            <small>Bullard, R. <a href="http://www.ehow.com/about_6735362_maintenance-phase-software-life-cycle.html">
+                The Maintenance Phase in the Software Life Cycle</a>. eHow. </small>
+        </p>
+        <p>
+            <small>Boehm, B. 1981. <a href="http://www.amazon.com/Engineering-Economics-Prentice-Hall-Computing-Technology/dp/0138221227">
+                Software Engineering Economics</a>. Prentice Hall. </small>
+        </p>
+        <p>
+            <small>Bonett, D.B., Wright, T.A. 2000. <a href="http://biostat.georgiahealth.edu/journal%20club/bonett_wright_2000.pdf">
+                Sample size requirements for estimating pearson, kendall and spearman correlations</a>.
+                In: Psychometrika, Vol. 65, Issue 1, pp. 23-28. </small>
+        </p>
+        <p>
+            <small>Charette, R.N. 2005. <a href="http://spectrum.ieee.org/computing/software/why-software-fails">
+                Why Software Fails</a>. IEEE Spectrum. </small>
+        </p>
+        <p>
+            <small>Chhabra, J.K. 2011. <a href="http://www.iaeng.org/publication/WCE2011/WCE2011_pp1249-1253.pdf">
+                Code Cognitive Complexity: A New Measure</a>. In: Proceedings of the World Congress
+                on Engineering 2011 Vol 2. </small>
+        </p>
+        <p>
+            <small>Cognence Inc. 2005. <a href="http://www.cognence.com/pdfs/cognence%20Cost%20of%20Quality%20Whitepaper.pdf">
+                Are Software Quality Problems Costing Your Company?</a>. Whitepaper.</small>
+        </p>
+        <p>
+            <small>Cordy, J.R. 2003. <a href="http://research.cs.queensu.ca/home/cordy/Papers/IWPC03_Keynote.pdf">
+                Comprehending Reality - Practical Barriers to Industrial Adoption of Software Maintenance
+                Automation</a>. In: Proceedings of the 11th IEEE International Workshop on Program
+                Comprehension, p. 196. </small>
+        </p>
+        <p>
+            <small>Dutta, S. 2007. <a href="http://www.insead.edu/facultyresearch/centres/elab/publications/docs/insead%20report4.pdf">
+                Recognising the True Value of Software Assets</a>. Insead. </small>
+        </p>
+        <p>
+            <small>El Emam, K. 2005. <a href="http://www.amazon.com/The-Software-Quality-Khaled-Emam/dp/0849332982/ref=tmm_hrd_title_0">
+                The ROI from Software Quality</a>. Auerbach Publications.</small>
+        </p>
+        <p>
+            <small>Eveleens, J.L., Verhoef C. 2010. <a href="http://www.cs.vu.nl/~x/chaos/chaos.pdf">
+                The rise and fall of the Chaos report figures</a>. In: IEEE Software archive, Volume
+                27, Issue 1, pp. 30-36.</small>
+        </p>
+        <p>
+            <small>Fowler, M., Beck, K., Brant, J., Opdyke, W., Roberts, D. 1999. <a href="http://www.amazon.com/Refactoring-Improving-Design-Existing-Code/dp/0201485672/ref=sr_1_1?ie=UTF8&s=books&qid=1263471648&sr=8-1">
+                Refactoring: Improving the Design of Existing Code</a>. Addison-Wesley. </small>
+        </p>
+        <p>
+            <small>Galorath, D. 2010. <a href="http://www.galorath.com/wp/more-software-project-failure-challenge-information-from-cai.php">
+                More Software Project Failure / Challenge Information From CAI</a>. Dan on Estimating.</small>
+        </p>
+        <p>
+            <small>Galorath, D. 2012. <a href="http://www.galorath.com/wp/software-project-failure-costs-billions-better-estimation-planning-can-help.php">
+                Software Project Failure Costs Billions.. Better Estimation & Planning Can Help</a>.
+                Dan on Estimating.</small>
+        </p>
+        <p>
+            <small>Garcia, M.J.B., Alvarez, J.C.G. 1996. <a href="http://ieeexplore.ieee.org/xpl/login.jsp?tp=&arnumber=564992&url=http%3A%2F%2Fieeexplore.ieee.org%2Fxpls%2Fabs_all.jsp%3Farnumber%3D564992">
+                Maintainability as a key factor in maintenance productivity: a case study</a>. In:
+                Proceedings of the 1996 International Conference on Software Maintenance, p. 87.
+            </small>
+        </p>
+        <p>
+            <small>Glass, R.L. 2001. <a href="http://www.eng.auburn.edu/~hendrix/comp6710/readings/Forgotten_Fundamentals_IEEE_Software_May_2001.pdf">
+                Frequently Forgotten Fundamental Facts about Software Engineering</a>. In: Journal
+                IEEE Software Vol. 18 Issue 3, p. 112. </small>
+        </p>
+        <p>
+            <small>Glass, R.L. 2005. <a href="http://www.few.vu.nl/~shopman/VU/sccs/rates.pdf">IT
+                Failure Rates—70% or 10–15%?</a> In: IEEE Software archive, Vol. 22, Issue 3, pp.
+                110-112. </small>
+        </p>
+        <p>
+            <small>Glass, R.L. 2006. <a href="http://www.uio.no/studier/emner/matnat/ifi/INF5180/v10/undervisningsmateriale/reading-materials/p01/glass.pdf">
+                The Standish Report: Does It Really Describe a Software Crisis?</a> In: Communications
+                of the ACM, Vol. 49, No. 8, pp.15-16. </small>
+        </p>
+        <p>
+            <small>de Groot, J., Nugroho, A., Back, T., Visser, J. 2012. <a href="http://www.sig.eu/blobs/Research/Scientific%20publication/2012/What%20Is%20the%20Value%20of%20Your%20Software.pdf">
+                What Is the Value of Your Software?</a>. In: 3rd International Workshop on Managing
+                Technical Debt (MTD), pp. 37-44. </small>
+        </p>
+        <p>
+            <small>Heitlager, I.,Kuipers, T., Visser, J. 2007. <a href="http://www.sig.eu/blobs/Nieuws/2007%20A%20Practical%20Model%20for%20Measuring%20Maintainability-Quatic.pdf">
+                A Practical Model for Measuring Maintainability</a>. In: Proceedings of the 6th
+                International Conference on Quality of Information and Communications Technology,
+                pp. 30-39.</small>
+        </p>
+        <p>
+            <small>Jones, C. 2006. <a href="http://www.compaid.com/caiinternet/ezine/capersjones-maintenance.pdf">
+                The Economics of Software Maintenance in the Twenty First Century</a>. Computer
+                Aid.</small>
+        </p>
+        <p>
+            <small>Jones, C. 2008. <a href="http://www.amazon.com/Applied-Software-Measurement-Analysis-Productivity/dp/0071502440">
+                Applied Software Measurement: Global Analysis of Productivity and Quality</a>. McGraw-Hill.
+            </small>
+        </p>
+        <p>
+            <small>Kapser, C., Godfrey, M.W. 2006. <a href="http://maveric0.uwaterloo.ca/~migod/papers/2008/emse08-ClonePatterns.pdf">
+                “Cloning considered harmful” considered harmful: patterns of cloning in software</a>.
+                In: 13th Working Conference on Reverse Engineering (WCRE 2006). IEEE Computer Society,
+                pp. 19–28. </small>
+        </p>
+        <p>
+            <small>Karg, L.M., Grottke, M., Beckhaus, A. 2011. <a href="http://www.grottke.de/documents/ASystematicLiteratureReviewOfSWQCostResearch.pdf">
+                A Systematic Literature Review of Software Quality Cost Research</a>. In: Journal
+                of Systems and Software, Vol. 84, No. 3, pp. 415-427. </small>
+        </p>
+        <p>
+            <small>Krasner, H.. 1998. <a href="http://www.crosstalkonline.org/storage/issue-archives/1998/199811/199811-Krasner.pdf">
+                Using the Cost of Quality Approach for Software</a>. In: Crosstalk, The Journal
+                of Defense Software Engineering, pp. 6-11 </small>
+        </p>
+        <p>
+            <small>Laitinen, K. 1996. <a href="https://www.google.de/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0CDkQFjAA&url=http%3A%2F%2Fciteseerx.ist.psu.edu%2Fviewdoc%2Fdownload%3Fdoi%3D10.1.1.90.3000%26rep%3Drep1%26type%3Dpdf&ei=zcq1UfyoEO7Y7AbqmIGIDg&usg=AFQjCNFzlviyucPrR1__1gtGZydpMaqOiw&bvm=bv.47534661,d.ZGU&cad=rja">
+                Estimating Understandability of Software Documents</a>. In: ACM SIGSOFT Software
+                Engineering Notes, Vol. 21, Issue 4, pp 81-92. </small>
+        </p>
+        <p>
+            <small>Laporte, C.Y., Berrhouma, N., Doucet, M., Palza-Vargas, E. 2012. <a href="http://www.etsmtl.ca/Professeurs/claporte/documents/publications/Project-at-bombardier-transportation_SQP_June-2012.pdf">
+                Measuring the Cost of Software Quality of a Large Software Project at Bombardier
+                Transportation: A Case Study</a>. In: Software Quality Professional, Vol. 14, Issue
+                3, pp. 14-31.</small>
+        </p>
+        <p>
+            <small>Leach, R. J. 2000. <a href="http://books.google.com/books?id=XW8PlP7sCOkC&printsec=frontcover#v=onepage&q=&f=false">
+                Introduction to software engineering</a>. Crc Press. </small>
+        </p>
+        <p>
+            <small>Luijten B., Visser, J. 2010. <a href="http://www.sig.eu/blobs/Research/Scientific%20publication/SQM2010-FasterDefectResolution.pdf">
+                Faster Defect Resolution with Higher Technical Quality of Software</a>. In: Proc.
+                of the 4th International Workshop on System Quality and Maintainability, pp. 11-20.
+            </small>
+        </p>
+        <p>
+            <small>McCabe, T.J. 1976. <a href="http://www.literateprogramming.com/mccabe.pdf">A
+                Complexity Measure</a>. In: IEEE Transactions on Software Engineering Vol. 2, No.
+                4, p. 308. </small>
+        </p>
+        <p>
+            <small>McConnell, S. 2004. <a href="http://www.amazon.com/Code-Complete-Practical-Handbook-Construction/dp/0735619670">
+                Code Complete: A Practical Handbook of Software Construction, Second Edition.</a>.
+                Microsoft Press.</small>
+        </p>
+        <p>
+            <small>McKenna, P. 2005. <a href="http://www.ibm.com/developerworks/rational/library/nov05/mckenna/">
+                Assessing the economic value of software projects</a>. IBM. </small>
+        </p>
+        <p>
+            <small>Mead, N.R., Allen, J.H., Conklin, W.A., Drommi, A., Harrison, J., Ingalsbe, J.,
+                Rainey, J., Shoemaker, D. 2009. <a href="http://www.sei.cmu.edu/reports/09sr001.pdf">
+                    Making the Business Case for Software Assurance</a>. Software Engineering Institute
+                Special Report CMU/SEI-2009-SR-001. </small>
+        </p>
+        <p>
+            <small>Mierlitz, L. 2012. <a href="http://thisiswhatgoodlookslike.com/2012/06/10/gartner-survey-shows-why-projects-fail/">
+                Gartner Survey Shows Why Projects Fail</a>. thisiswhatgoodlookslike. </small>
+        </p>
+        <p>
+            <small>Newton, C. 2010. <a href="http://clarityincode.com/software-maintenance/">Software
+                maintenance</a>. Clarity in Code. </small>
+        </p>
+        <p>
+            <small>Nugroho, A., Kuipers, T., Visser, J. 2011. <a href="http://www.sig.eu/blobs/Research/Scientific%20publication/2011/icsews11mtdfull-p005-nugroho-1.pdf">
+                An Empirical Model of Technical Debt and Interest</a>. In: Proceedings of the 2nd
+                Workshop on Managing Technical Debt, pp. 1-8. </small>
+        </p>
+        <p>
+            <small>Omnext. 2010. <a href="http://www.omnext.net/downloads/Whitepaper_Omnext.pdf">
+                How to save on software maintenance costs</a>. Whitepaper. </small>
+        </p>
+        <p>
+            <small>Pigoski, T.M. 1996. <a href="http://www.amazon.com/Practical-Software-Maintenance-Practices-Investment/dp/0471170011">
+                Practical Software Maintenance</a>. John Wiley & Sons. </small>
+        </p>
+        <p>
+            <small>Roberts, M.. 2012. <a href="http://blog.lnsresearch.com/blog/bid/158757/Cost-of-Quality-More-than-Risk-and-Compliance">
+                Cost of Quality: More than Risk and Compliance</a>. LNS Research. </small>
+        </p>
+        <p>
+            <small>Salado, J. 2012. <a href="http://blog.optimyth.com/2012/10/6-best-practices-to-save-in-software-maintenance">
+                6 best practices to save in software maintenance</a>. Optimyth. </small>
+        </p>
+        <p>
+            <small>Seacord, R.C., Plakosh, D., Lewis, G.A. 2003. <a href="http://www.amazon.com/Modernizing-Legacy-Systems-Technologies-Engineering/dp/0321118847/ref=sr_1_1?ie=UTF8&s=books&qid=1263284190&sr=8-1">
+                Modernizing Legacy Systems: Software Technologies, Engineering Processes, and Business
+                Practices</a>. Addison-Wesley. </small>
+        </p>
+        <p>
+            <small>Sessions, R. 2009. <a href="http://sistemas.uniandes.edu.co/~isis4617/dokuwiki/lib/exe/fetch.php?media=principal:itcomplexitywhitepaper.pdf">
+                The IT Complexity Crisis: Danger and Opportunity</a>.</small>
+        </p>
+        <p>
+            <small>Sharpe, R. 2008. <a href="http://www.enerjy.com/blog/?p=198">McCabe Cyclomatic
+                Complexity: the proof in the pudding</a>. Enerjy. </small>
+        </p>
+        <p>
+            <small>Sims, C. 2010. <a href="http://www.infoq.com/news/2010/01/Estimating-Business-Value">
+                Estimating Business Value</a>. InfoQ. </small>
+        </p>
+        <p>
+            <small>SolidSourceIT. 2012. <a href="http://solidsourceit.wordpress.com/2012/08/03/does-source-code-duplication-matter/">
+                Does source code duplication matter?</a></small>
+        </p>
+        <p>
+            <small>Stafford, P. 2003. <a href="http://pdf.aminer.org/000/364/114/standards_effecting_software_maintenance.pdf">
+                Software Maintenance As Part of the Software Life Cycle</a>. Tufts University (Boston,
+                MA), Department of Computer Science. </small>
+        </p>
+        <p>
+            <small>The Economist. 2004. <a href="http://www.economist.com/node/3307363">Make it
+                simple</a>. </small>
+        </p>
+        <p>
+            <small>The Economist. 2004. <a href="http://www.economist.com/node/3329859">Keep it
+                simple</a>. </small>
+        </p>
+        <p>
+            <small><a href="http://www.jstor.org/stable/2284441">Table of Critical Values of the
+                Spearman Rank Order Correlation Coefficients</a>. </small>
+        </p>
+        <p>
+            <small>van Solingen, R. 2004. <a href="http://virtual.vtt.fi/virtual/proj1/projects/moose/docs/ieeesoftware_measuring_roi%20of%20spi.pdf">
+                Measuring the ROI of Software Process Improvement</a>. In: IEEE Software archive,
+                Vol. 21, Issue 3, pp. 32-38. </small>
+        </p>
+        <p>
+            <small>Zar, J.H. 1972. <a href="http://www.jstor.org/stable/2284441">Significance Testing
+                of the Spearman Rank Correlation Coefficient</a>. In: Journal of the American Statistical
+                Association Vol. 67, No. 339, pp. 578-580. </small>
+        </p>
+    </div>
+    <br />
+    <hr style="border: 1px solid #333" />
+    <br />
+    <div id="disqus_thread">
+        @Disqus.ShowComments(ViewBag.DisqusName)
+    </div>
+</div>

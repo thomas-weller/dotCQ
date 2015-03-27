@@ -1,0 +1,407 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ZeroModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ZeroModelStoreContainer">
+          <EntitySet Name="Calculations" EntityType="ZeroModel.Store.Calculations" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="IpAddresses" EntityType="ZeroModel.Store.IpAddresses" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="NormalizedCalculations" EntityType="ZeroModel.Store.NormalizedCalculations" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OnSiteEngagements" EntityType="ZeroModel.Store.OnSiteEngagements" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Calculations_IpAddresses" Association="ZeroModel.Store.FK_Calculations_IpAddresses">
+            <End Role="IpAddresses" EntitySet="IpAddresses" />
+            <End Role="Calculations" EntitySet="Calculations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NormalizedCalculations_Calculations" Association="ZeroModel.Store.FK_NormalizedCalculations_Calculations">
+            <End Role="Calculations" EntitySet="Calculations" />
+            <End Role="NormalizedCalculations" EntitySet="NormalizedCalculations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NormalizedCalculations_IpAddresses" Association="ZeroModel.Store.FK_NormalizedCalculations_IpAddresses">
+            <End Role="IpAddresses" EntitySet="IpAddresses" />
+            <End Role="NormalizedCalculations" EntitySet="NormalizedCalculations" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Calculations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AddressId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
+          <Property Name="Currency" Type="nchar" Nullable="false" MaxLength="3" />
+          <Property Name="ProjectSize" Type="int" Nullable="false" />
+          <Property Name="LifeTime" Type="int" Nullable="false" />
+          <Property Name="Quality" Type="int" Nullable="false" />
+          <Property Name="StaffCostsPerYear" Type="bigint" Nullable="false" />
+          <Property Name="SurplusPercent" Type="int" Nullable="false" />
+          <Property Name="SurplusInvestment" Type="bigint" Nullable="false" />
+          <Property Name="DevCosts" Type="bigint" Nullable="false" />
+          <Property Name="ModDevCosts" Type="bigint" Nullable="false" />
+          <Property Name="MaintCosts" Type="bigint" Nullable="false" />
+          <Property Name="ModMaintCosts" Type="bigint" Nullable="false" />
+          <Property Name="TotalCosts" Type="bigint" Nullable="false" />
+          <Property Name="ModTotalCosts" Type="bigint" Nullable="false" />
+          <Property Name="MaintPercent" Type="int" Nullable="false" />
+          <Property Name="ModMaintPercent" Type="int" Nullable="false" />
+          <Property Name="BreakEven" Type="float" Nullable="false" />
+          <Property Name="Roi" Type="float" Nullable="false" />
+          <Property Name="AvgYearlySaving" Type="bigint" Nullable="false" />
+          <Property Name="MaxYearlySaving" Type="bigint" Nullable="false" />
+          <Property Name="MinYearlySaving" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IpAddresses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="NormalizedCalculations">
+          <Key>
+            <PropertyRef Name="CalculationId" />
+          </Key>
+          <Property Name="CalculationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AddressId" Type="uniqueidentifier" />
+          <Property Name="Timestamp" Type="datetime" Nullable="false" />
+          <Property Name="SrcCurrency" Type="nchar" Nullable="false" MaxLength="3" />
+          <Property Name="Currency" Type="nchar" Nullable="false" MaxLength="3" />
+          <Property Name="StaffCostsPerYear" Type="float" Nullable="false" />
+          <Property Name="ProjectSize" Type="int" Nullable="false" />
+          <Property Name="LifeTime" Type="int" Nullable="false" />
+          <Property Name="Quality" Type="int" Nullable="false" />
+          <Property Name="SurplusPercent" Type="int" Nullable="false" />
+          <Property Name="SurplusInvestment" Type="float" Nullable="false" />
+          <Property Name="DevCosts" Type="float" Nullable="false" />
+          <Property Name="ModDevCosts" Type="float" Nullable="false" />
+          <Property Name="MaintCosts" Type="float" Nullable="false" />
+          <Property Name="ModMaintCosts" Type="float" Nullable="false" />
+          <Property Name="TotalCosts" Type="float" Nullable="false" />
+          <Property Name="ModTotalCosts" Type="float" Nullable="false" />
+          <Property Name="MaintPercent" Type="float" Nullable="false" />
+          <Property Name="ModMaintPercent" Type="float" Nullable="false" />
+          <Property Name="BreakEven" Type="float" Nullable="false" />
+          <Property Name="Roi" Type="float" Nullable="false" />
+          <Property Name="AvgYearlySaving" Type="float" Nullable="false" />
+          <Property Name="MaxYearlySaving" Type="float" Nullable="false" />
+          <Property Name="MinYearlySaving" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OnSiteEngagements">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="ForumUsers" Type="int" />
+          <Property Name="NewsLetterSubscriptions" Type="int" />
+          <Property Name="Surveys" Type="int" />
+          <Property Name="Comments" Type="int" />
+          <Property Name="ForumTopics" Type="int" />
+          <Property Name="CommentUsers" Type="int" />
+        </EntityType>
+        <Association Name="FK_Calculations_IpAddresses">
+          <End Role="IpAddresses" Type="ZeroModel.Store.IpAddresses" Multiplicity="1" />
+          <End Role="Calculations" Type="ZeroModel.Store.Calculations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IpAddresses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Calculations">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NormalizedCalculations_Calculations">
+          <End Role="Calculations" Type="ZeroModel.Store.Calculations" Multiplicity="1" />
+          <End Role="NormalizedCalculations" Type="ZeroModel.Store.NormalizedCalculations" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Calculations">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NormalizedCalculations">
+              <PropertyRef Name="CalculationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NormalizedCalculations_IpAddresses">
+          <End Role="IpAddresses" Type="ZeroModel.Store.IpAddresses" Multiplicity="0..1" />
+          <End Role="NormalizedCalculations" Type="ZeroModel.Store.NormalizedCalculations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IpAddresses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NormalizedCalculations">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ZeroModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="ZeroEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="IpAddresses" EntityType="ZeroModel.IpAddresses" />
+          <EntitySet Name="Calculations" EntityType="ZeroModel.Calculations" />
+          <EntitySet Name="NormalizedCalculations" EntityType="ZeroModel.NormalizedCalculations" />
+          <AssociationSet Name="FK_Calculations_IpAddresses" Association="ZeroModel.FK_Calculations_IpAddresses">
+            <End EntitySet="IpAddresses" Role="IpAddresses" />
+            <End EntitySet="Calculations" Role="Calculations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NormalizedCalculations_Calculations" Association="ZeroModel.FK_NormalizedCalculations_Calculations">
+            <End EntitySet="Calculations" Role="Calculations" />
+            <End EntitySet="NormalizedCalculations" Role="NormalizedCalculations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NormalizedCalculations_IpAddresses" Association="ZeroModel.FK_NormalizedCalculations_IpAddresses">
+            <End Role="IpAddresses" EntitySet="IpAddresses" />
+            <End Role="NormalizedCalculations" EntitySet="NormalizedCalculations" />
+          </AssociationSet>
+          <EntitySet Name="OnSiteEngagements" EntityType="ZeroModel.OnSiteEngagements" />
+        </EntityContainer>
+        <EntityType Name="IpAddresses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Calculations" Relationship="ZeroModel.FK_Calculations_IpAddresses" FromRole="IpAddresses" ToRole="Calculations" />
+          <NavigationProperty Name="NormalizedCalculations" Relationship="ZeroModel.FK_NormalizedCalculations_IpAddresses" FromRole="IpAddresses" ToRole="NormalizedCalculations" />
+        </EntityType>
+        <EntityType Name="Calculations">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" Type="Guid" />
+          <Property Name="Currency" Nullable="false" MaxLength="3" FixedLength="true" Unicode="true" Type="String" />
+          <Property Name="TotalCosts" Nullable="false" Type="Int64" />
+          <Property Name="AddressId" Nullable="false" Type="Guid" />
+          <Property Name="Timestamp" Nullable="false" Type="DateTime" />
+          <NavigationProperty Name="IpAddress" Relationship="ZeroModel.FK_Calculations_IpAddresses" FromRole="Calculations" ToRole="IpAddresses" />
+          <NavigationProperty Name="NormalizedCalculation" Relationship="ZeroModel.FK_NormalizedCalculations_Calculations" FromRole="Calculations" ToRole="NormalizedCalculations" />
+          <Property Name="ProjectSize" Nullable="false" Type="Int32" />
+          <Property Name="Quality" Nullable="false" Type="Int32" />
+          <Property Name="SurplusPercent" Nullable="false" Type="Int32" />
+          <Property Name="SurplusInvestment" Nullable="false" Type="Int64" />
+          <Property Name="DevCosts" Nullable="false" Type="Int64" />
+          <Property Name="ModDevCosts" Nullable="false" Type="Int64" />
+          <Property Name="MaintCosts" Nullable="false" Type="Int64" />
+          <Property Name="ModMaintCosts" Nullable="false" Type="Int64" />
+          <Property Name="ModTotalCosts" Nullable="false" Type="Int64" />
+          <Property Name="MaintPercent" Nullable="false" Type="Int32" />
+          <Property Name="ModMaintPercent" Nullable="false" Type="Int32" />
+          <Property Type="Int32" Name="Lifetime" Nullable="false" />
+          <Property Type="Double" Name="BreakEven" Nullable="false" />
+          <Property Type="Double" Name="Roi" Nullable="false" />
+          <Property Type="Int64" Name="AvgYearlySaving" Nullable="false" />
+          <Property Type="Int64" Name="MaxYearlySaving" Nullable="false" />
+          <Property Type="Int64" Name="MinYearlySaving" Nullable="false" />
+          <Property Type="Int64" Name="StaffCostsPerYear" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NormalizedCalculations">
+          <Key>
+            <PropertyRef Name="CalculationId" />
+          </Key>
+          <Property Type="Guid" Name="CalculationId" Nullable="false" />
+          <Property Type="DateTime" Name="Timestamp" Nullable="false" />
+          <Property Type="Double" Name="TotalCosts" Nullable="false" />
+          <NavigationProperty Name="Calculation" Relationship="ZeroModel.FK_NormalizedCalculations_Calculations" FromRole="NormalizedCalculations" ToRole="Calculations" />
+          <NavigationProperty Name="IpAddress" Relationship="ZeroModel.FK_NormalizedCalculations_IpAddresses" FromRole="NormalizedCalculations" ToRole="IpAddresses" />
+          <Property Type="String" Name="SrcCurrency" Nullable="false" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="Currency" Nullable="false" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Type="Int32" Name="ProjectSize" Nullable="false" />
+          <Property Type="Int32" Name="LifeTime" Nullable="false" />
+          <Property Type="Int32" Name="Quality" Nullable="false" />
+          <Property Type="Int32" Name="SurplusPercent" Nullable="false" />
+          <Property Type="Double" Name="SurplusInvestment" Nullable="false" />
+          <Property Type="Double" Name="DevCosts" Nullable="false" />
+          <Property Type="Double" Name="ModDevCosts" Nullable="false" />
+          <Property Type="Double" Name="MaintCosts" Nullable="false" />
+          <Property Type="Double" Name="ModMaintCosts" Nullable="false" />
+          <Property Type="Double" Name="ModTotalCosts" Nullable="false" />
+          <Property Type="Double" Name="MaintPercent" Nullable="false" />
+          <Property Type="Double" Name="ModMaintPercent" Nullable="false" />
+          <Property Type="Double" Name="BreakEven" Nullable="false" />
+          <Property Type="Double" Name="Roi" Nullable="false" />
+          <Property Type="Double" Name="AvgYearlySaving" Nullable="false" />
+          <Property Type="Double" Name="MaxYearlySaving" Nullable="false" />
+          <Property Type="Double" Name="MinYearlySaving" Nullable="false" />
+          <Property Type="Guid" Name="AddressId" Nullable="true" />
+          <Property Type="Double" Name="StaffCostsPerYear" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Calculations_IpAddresses">
+          <End Type="ZeroModel.IpAddresses" Multiplicity="1" Role="IpAddresses" />
+          <End Type="ZeroModel.Calculations" Multiplicity="*" Role="Calculations" />
+          <ReferentialConstraint>
+            <Principal Role="IpAddresses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Calculations">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NormalizedCalculations_Calculations">
+          <End Type="ZeroModel.Calculations" Multiplicity="1" Role="Calculations" />
+          <End Type="ZeroModel.NormalizedCalculations" Multiplicity="0..1" Role="NormalizedCalculations" />
+          <ReferentialConstraint>
+            <Principal Role="Calculations">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NormalizedCalculations">
+              <PropertyRef Name="CalculationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NormalizedCalculations_IpAddresses">
+          <End Type="ZeroModel.IpAddresses" Role="IpAddresses" Multiplicity="0..1" />
+          <End Type="ZeroModel.NormalizedCalculations" Role="NormalizedCalculations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IpAddresses">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NormalizedCalculations">
+              <PropertyRef Name="AddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="OnSiteEngagements">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Guid" Name="Id" Nullable="false" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="Int32" Name="ForumUsers" />
+          <Property Type="Int32" Name="NewsLetterSubscriptions" />
+          <Property Type="Int32" Name="Surveys" />
+          <Property Type="Int32" Name="Comments" />
+          <Property Type="Int32" Name="CommentUsers" />
+          <Property Type="Int32" Name="ForumTopics" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ZeroModelStoreContainer" CdmEntityContainer="ZeroEntities">
+          <EntitySetMapping Name="IpAddresses">
+            <EntityTypeMapping TypeName="ZeroModel.IpAddresses">
+              <MappingFragment StoreEntitySet="IpAddresses">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Calculations">
+            <EntityTypeMapping TypeName="ZeroModel.Calculations">
+              <MappingFragment StoreEntitySet="Calculations">
+                <ScalarProperty Name="StaffCostsPerYear" ColumnName="StaffCostsPerYear" />
+                <ScalarProperty Name="MinYearlySaving" ColumnName="MinYearlySaving" />
+                <ScalarProperty Name="MaxYearlySaving" ColumnName="MaxYearlySaving" />
+                <ScalarProperty Name="AvgYearlySaving" ColumnName="AvgYearlySaving" />
+                <ScalarProperty Name="Roi" ColumnName="Roi" />
+                <ScalarProperty Name="BreakEven" ColumnName="BreakEven" />
+                <ScalarProperty Name="Lifetime" ColumnName="LifeTime" />
+                <ScalarProperty Name="ModMaintPercent" ColumnName="ModMaintPercent" />
+                <ScalarProperty Name="MaintPercent" ColumnName="MaintPercent" />
+                <ScalarProperty Name="ModTotalCosts" ColumnName="ModTotalCosts" />
+                <ScalarProperty Name="ModMaintCosts" ColumnName="ModMaintCosts" />
+                <ScalarProperty Name="MaintCosts" ColumnName="MaintCosts" />
+                <ScalarProperty Name="ModDevCosts" ColumnName="ModDevCosts" />
+                <ScalarProperty Name="DevCosts" ColumnName="DevCosts" />
+                <ScalarProperty Name="SurplusInvestment" ColumnName="SurplusInvestment" />
+                <ScalarProperty Name="SurplusPercent" ColumnName="SurplusPercent" />
+                <ScalarProperty Name="Quality" ColumnName="Quality" />
+                <ScalarProperty Name="ProjectSize" ColumnName="ProjectSize" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="TotalCosts" ColumnName="TotalCosts" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NormalizedCalculations">
+            <EntityTypeMapping TypeName="ZeroModel.NormalizedCalculations">
+              <MappingFragment StoreEntitySet="NormalizedCalculations">
+                <ScalarProperty Name="StaffCostsPerYear" ColumnName="StaffCostsPerYear" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+                <ScalarProperty Name="MinYearlySaving" ColumnName="MinYearlySaving" />
+                <ScalarProperty Name="MaxYearlySaving" ColumnName="MaxYearlySaving" />
+                <ScalarProperty Name="AvgYearlySaving" ColumnName="AvgYearlySaving" />
+                <ScalarProperty Name="Roi" ColumnName="Roi" />
+                <ScalarProperty Name="BreakEven" ColumnName="BreakEven" />
+                <ScalarProperty Name="ModMaintPercent" ColumnName="ModMaintPercent" />
+                <ScalarProperty Name="MaintPercent" ColumnName="MaintPercent" />
+                <ScalarProperty Name="ModTotalCosts" ColumnName="ModTotalCosts" />
+                <ScalarProperty Name="ModMaintCosts" ColumnName="ModMaintCosts" />
+                <ScalarProperty Name="MaintCosts" ColumnName="MaintCosts" />
+                <ScalarProperty Name="ModDevCosts" ColumnName="ModDevCosts" />
+                <ScalarProperty Name="DevCosts" ColumnName="DevCosts" />
+                <ScalarProperty Name="SurplusInvestment" ColumnName="SurplusInvestment" />
+                <ScalarProperty Name="SurplusPercent" ColumnName="SurplusPercent" />
+                <ScalarProperty Name="Quality" ColumnName="Quality" />
+                <ScalarProperty Name="LifeTime" ColumnName="LifeTime" />
+                <ScalarProperty Name="ProjectSize" ColumnName="ProjectSize" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="SrcCurrency" ColumnName="SrcCurrency" />
+                <ScalarProperty Name="TotalCosts" ColumnName="TotalCosts" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="CalculationId" ColumnName="CalculationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OnSiteEngagements">
+            <EntityTypeMapping TypeName="ZeroModel.OnSiteEngagements">
+              <MappingFragment StoreEntitySet="OnSiteEngagements">
+                <ScalarProperty Name="ForumTopics" ColumnName="ForumTopics" />
+                <ScalarProperty Name="CommentUsers" ColumnName="CommentUsers" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Surveys" ColumnName="Surveys" />
+                <ScalarProperty Name="NewsLetterSubscriptions" ColumnName="NewsLetterSubscriptions" />
+                <ScalarProperty Name="ForumUsers" ColumnName="ForumUsers" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="ZeroModel">
+        <EntityTypeShape EntityType="ZeroModel.IpAddresses" Width="2.125" PointX="1.875" PointY="0.5" Height="1.7879850260416657" />
+        <EntityTypeShape EntityType="ZeroModel.Calculations" PointX="0.5" PointY="3.125" Width="1.875" Height="5.8263151041666656" />
+        <EntityTypeShape EntityType="ZeroModel.NormalizedCalculations" Width="1.875" PointX="3.375" PointY="2.875" Height="6.0186165364583335" />
+        <AssociationConnector Association="ZeroModel.FK_Calculations_IpAddresses">
+          <ConnectorPoint PointX="2.125" PointY="2.2879850260416656" />
+          <ConnectorPoint PointX="2.125" PointY="3.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="ZeroModel.FK_NormalizedCalculations_Calculations">
+          <ConnectorPoint PointX="2.375" PointY="6.0093082682291667" />
+          <ConnectorPoint PointX="3.375" PointY="6.0093082682291667" />
+        </AssociationConnector>
+        <AssociationConnector Association="ZeroModel.FK_NormalizedCalculations_IpAddresses" >
+          <ConnectorPoint PointX="3.6875" PointY="2.2879850260416656" />
+          <ConnectorPoint PointX="3.6875" PointY="2.875" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="ZeroModel.OnSiteEngagements" Width="1.5" PointX="8.375" PointY="0.75" Height="2.5571907552083331" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

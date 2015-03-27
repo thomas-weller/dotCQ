@@ -1,0 +1,135 @@
+﻿@import url(//fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700);
+
+
+#gboard_header
+{
+    display: block;
+    width: 100%;
+    height: 60px;
+    max-width: 1235px;
+    position: absolute;
+    margin: 0px;
+    top: 0px;
+    left: 50%;
+    margin-left: -618px;
+    background: whitesmoke;
+    float: left;
+    border-bottom: 1px solid #333;
+}
+
+#table_header
+{
+    visibility: hidden;
+}
+
+#header
+{
+    margin-top: 35px;
+    padding: 0px;
+    background-color: white;
+}
+
+.inner
+{
+    width: 1196px;
+    margin: 0 auto;
+}
+#logo
+{
+    width: 180px;
+    height: 17px;
+    float: left;
+    background: url(https://s3-eu-west-1.amazonaws.com/dotcq-projectzero/WebContent/img/logo.png);
+    margin: 10px 0 0 0;
+}
+#logo a
+{
+    display: block;
+    width: 180px;
+    height: 17px;
+    text-indent: -10000px;
+}
+#q-main-menu
+{
+    float: right;
+}
+#q-main-menu li
+{
+    float: left;
+    display: list-item;
+    list-style-type: none;
+}
+#q-main-menu li a
+{
+    text-decoration: none;
+    display: block;
+    font-family: 'Open Sans Condensed', Helvetica, sans-serif;
+    webkit-box-shadow: none;
+    background-color: transparent;
+    box-shadow: none;
+    color: rgb(153, 153, 153);
+    cursor: auto;
+    display: block;
+    float: none;
+    font-size: 14px;
+    font-weight: bold;
+    height: 20px;
+    letter-spacing: 1px;
+    line-height: 20px;
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+    outline-color: rgb(153, 153, 153);
+    outline-style: none;
+    outline-width: 0px;
+    padding-bottom: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 20px;
+    text-align: left;
+    text-decoration: none;
+    text-shadow: none;
+    text-transform: uppercase;
+}
+#q-main-menu li a:hover {
+    color: #777777;
+}
+div#header #header_container
+{
+    padding: 0px;
+}
+
+div#container
+{
+    padding: 0;
+    margin-top: 60px;
+}
+.side-box-content ul, .side-box-content ol, .side-box-content ul li, .side-box-content ol li
+{
+    margin: 0px;
+}
+div#top-right
+{
+    padding-top: 16px;
+    padding-right: 20px;
+    color: #555;
+}
+#top-right a
+{
+    color: #555;
+}
+.side-box-content, .blue_box_top, .blue_box_bottom, .side-box-with-image, .r_blue {
+background-color: #F6F6F6;
+}
+div#sidebar {
+     margin-top: 6px;
+}
+body.access.access-unauthenticated .content.content_green {
+    display:none;
+}
+body.entries.entries-show .content.content_green {
+    display:none;
+}
+a#password_help {
+    display:none;
+}

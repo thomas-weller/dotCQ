@@ -1,0 +1,88 @@
+.demo-1 {
+	margin-top: 240px;
+	text-align: right;
+}
+.demo {
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+.demo-2 {
+	margin-top: 250px;
+	margin-bottom: 200px;
+}
+.demo-2 h1 {
+	margin-top: 32px;
+}
+.demo-2 img {
+	margin: 0 auto;
+	display: block;
+}
+.demo-4 .span4 {
+	margin-top: 50px;
+	margin-bottom: 70px;
+	text-align: right;
+}
+.demo-4 i {
+	color: #FFAE1A;
+}
+.demo-4 h1 {
+	margin-top: 30px;
+}
+
+@media (min-width: 768px) and (max-width: 979px) { 
+	.demo img {
+		max-width: 50%;
+	}
+	.demo-1 {
+		margin-top: 120px;
+	}
+	.demo-2 {
+		margin-top: 100px;
+		margin-bottom: 100px;
+	}
+	.browsers li img {
+		max-width: 100px;
+	}
+}
+
+@media (max-width: 767px) {
+	.demo {margin: 0; text-align: center;}
+	.demo-1 {
+		margin-top: 0;
+	}
+	.demo-2 {
+		margin-top: 0;
+		margin-bottom: 40px;
+		text-align: center;
+	}
+	#purchase {
+		text-align: center;
+	}
+	.demo-4 .span4 {
+		text-align: center;
+	}
+	.demo img {
+		width: auto;
+		max-width: 100%;
+		float: none;
+		position: relative;
+		margin: 15px auto;
+	}
+
+	#code-editor {
+		float: right;
+		position: relative;
+		right: -20px;
+	}
+
+	.browsers li img {
+		max-width: 50px;
+	}
+
+	.text {
+		position: relative;
+		display: block;
+		text-align: center;
+	}
+
+}
