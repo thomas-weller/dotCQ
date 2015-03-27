@@ -1,9 +1,0 @@
-    <p style="margin-bottom: 0px;">
-        This blog mostly revolves around code quality, related project management issues, software in general, 
-		and C#/.NET programming in particular (mostly but not exclusively ASP.NET MVC). Also, miscellaneous thoughts about personal 
-		motivation, life as a founder, and running a small company will sometimes be highlighted.
-	</p>
-    <p>
-	    The blog accompanies - but is not limited to - the
-        <img src="http://www.dotcq.com/blog/wp-content/uploads/2013/10/logo-text.png" alt="logo-small" style="height: 18px; margin-bottom: -7px;" />
-        code quality web service.</p>
